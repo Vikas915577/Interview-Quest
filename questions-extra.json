@@ -1,0 +1,2287 @@
+{
+  "schemaVersion": 1,
+  "purpose": "QA-reviewed additional batch to expand guided learning paths",
+  "questionCount": 72,
+  "questions": [
+    {
+      "id": "telephonic-013",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "If the phone signal is poor, how would you handle the call professionally?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Tell the recruiter the line is breaking up and ask to repeat the key part or switch to a clearer time/number.",
+      "explanation": "Do not guess the question. Keep the interruption brief, apologise once, then confirm what you heard.",
+      "example": "“Sorry, your voice is breaking up. Could you please repeat the last part? I want to make sure I answer the right question.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Pretending you heard everything can lead to an unrelated answer."
+      ],
+      "followUp": "What would you say if the call drops unexpectedly?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "telephonic",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "telephonic-014",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "A recruiter asks about salary before you know the responsibilities. What is a balanced reply?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Ask for the role range and responsibilities, then share a researched, realistic range if you are ready.",
+      "explanation": "Salary discussion depends on location, role, total compensation and your actual constraints. Do not invent a current salary or offer.",
+      "example": "“Could you please share the budgeted range and role scope? I can then discuss an expectation that fits the responsibilities.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Giving a random number without understanding the role can anchor the conversation poorly."
+      ],
+      "followUp": "How would you respond if the recruiter insists on an expected range?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone",
+        "src-indeed"
+      ],
+      "tags": [
+        "telephonic",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "telephonic-015",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "How can you confirm the next step before ending a recruiter call?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Summarise the next step, ask about timeline and thank the recruiter.",
+      "explanation": "A clear close prevents confusion about assessments, interview rounds, contact details or documents.",
+      "example": "“Thank you for the details. Just to confirm, the next step is the SQL assessment by Friday, correct?”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume the recruiter will follow up on an unstated timeline."
+      ],
+      "followUp": "What would you do if you do not receive the promised update?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "telephonic",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "telephonic-016",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "The recruiter asks whether you are comfortable with a shift you have not researched. What should you say?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Ask for the exact timing, days, timezone and any rotation before confirming.",
+      "explanation": "Availability is a practical constraint. Be courteous without agreeing to conditions you cannot support.",
+      "example": "“Could you clarify the shift timings and whether the schedule rotates? I would like to confirm accurately.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not agree first and later disclose a conflict that was already known."
+      ],
+      "followUp": "How would you answer if the shift does not suit you?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "telephonic",
+        "beginner",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "telephonic-017",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "How should you answer “Why are you interested in this role?” in a first phone screen?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Connect one or two real skills to the responsibilities stated in the job description.",
+      "explanation": "Recruiter answers should be brief and specific rather than generic praise. Mention interest you can explain honestly.",
+      "example": "“The role combines SQL, reporting and business metrics, which match the skills I am building and using in analytics work.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not claim deep expertise in a tool you have not used."
+      ],
+      "followUp": "Which job-description requirement would you connect to your strongest skill?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "telephonic",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "telephonic-018",
+      "category": "telephonic",
+      "subcategory": "Telephonic Interview",
+      "question": "A recruiter asks you to share a document immediately, but you are unsure which one. How do you respond?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "MIS / Reporting Analyst",
+        "Business Analyst",
+        "Junior Data Engineer"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Ask which document, format and secure channel they need, then share only appropriate material.",
+      "explanation": "Protect personal information and avoid sending unrelated confidential employer/client files.",
+      "example": "“Could you confirm which document is required and the preferred secure channel? I will share the relevant file.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Never share passwords, OTPs or private client data as part of screening."
+      ],
+      "followUp": "What would you do if asked to pay a fee to schedule an interview?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone",
+        "src-indeed"
+      ],
+      "tags": [
+        "telephonic",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-015",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "Tell me about a time you made a mistake at work. How should you structure the answer?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "behavioral",
+      "shortAnswer": "Use a real example: context, your responsibility, corrective action, result and prevention of recurrence.",
+      "explanation": "A strong answer shows accountability without exaggerating the mistake or blaming teammates. Choose a genuine, proportionate example.",
+      "example": "“I noticed a report filter was inconsistent, informed the owner, corrected it, rechecked totals and added a validation step.” Use only if true.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not invent an incident or claim an outcome you cannot verify."
+      ],
+      "followUp": "What control did you add to reduce the chance of recurrence?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "intermediate",
+        "behavioral"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-016",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "Describe how you would handle disagreement with a teammate about a KPI definition.",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Clarify the business question, compare definitions and filters, then document an agreed metric owner decision.",
+      "explanation": "Metric disagreements often stem from different denominators, time windows, exclusions or grains. Align on evidence before debating.",
+      "example": "“Let us compare the source, date range and denominator, then confirm the agreed definition with the metric owner.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not treat a difference in interpretation as a personal conflict."
+      ],
+      "followUp": "What if two dashboards still disagree after the definition is aligned?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-017",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "What would you do if you could not meet a reporting deadline?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Raise the risk early, explain the impact, propose a realistic revised time and prioritise the critical deliverable.",
+      "explanation": "Early communication gives stakeholders options such as a validated partial result or adjusted scope.",
+      "example": "“The source refresh is delayed. I can send the validated core KPIs now and complete the detail table after the refresh.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not hide the delay until the deadline has passed."
+      ],
+      "followUp": "How would you keep stakeholders updated if timing changed again?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "beginner",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-018",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "How do you learn a new tool when the deadline is short?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "behavioral",
+      "shortAnswer": "Define the task, learn the minimum concepts needed, test on a small example and validate the output.",
+      "explanation": "A practical learning loop is often more efficient than consuming a long course without applying it.",
+      "example": "To learn a new Excel function, test it on a small known dataset and compare the result with a manual calculation.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not imply that one tutorial makes you an expert."
+      ],
+      "followUp": "How would you decide when to ask a senior teammate for help?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "beginner",
+        "behavioral"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-019",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "What if an interviewer asks for a skill you have only studied, not used at work?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "State your level accurately, explain what you understand and describe how you would test it.",
+      "explanation": "A transparent distinction between hands-on experience, practice and theoretical knowledge protects credibility.",
+      "example": "“I have practised the concept in a learning project, but I have not used it in production. I can explain the basics and how I would validate it.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not present a tutorial exercise as production experience."
+      ],
+      "followUp": "What small exercise could demonstrate your current level?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "hr-020",
+      "category": "hr",
+      "subcategory": "HR & Non-Technical",
+      "question": "How would you respond if you received critical feedback on a dashboard?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Clarify the concern, separate preference from correctness, agree the acceptance criteria and revise/test the report.",
+      "explanation": "Feedback can uncover usability issues, changed requirements or genuine data-quality defects. Acknowledge and follow through.",
+      "example": "If users cannot find a monthly trend, check if the trend is needed for the decision and improve navigation without changing KPI logic.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not dismiss feedback without investigating."
+      ],
+      "followUp": "How would you confirm that the revised dashboard solved the issue?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "hr",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-023",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "Why can a JOIN unexpectedly increase the number of rows in a report?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "A join can multiply rows when the join key is not unique on one or both sides.",
+      "explanation": "Check the grain and cardinality of each table. Aggregate or deduplicate only when business rules justify it; do not hide a many-to-many relationship blindly.",
+      "example": "If each customer has three orders, joining customers to orders returns three customer-linked rows for that customer.",
+      "sampleCode": "SELECT customer_id, COUNT(*)\nFROM customers\nGROUP BY customer_id\nHAVING COUNT(*) > 1;",
+      "commonMistakes": [
+        "Do not assume every join should preserve the left row count."
+      ],
+      "followUp": "How would you test key uniqueness before joining?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "intermediate",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-024",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "How do COUNT(*) and COUNT(column_name) differ when the column contains NULLs?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "COUNT(*) counts rows; COUNT(column_name) counts only rows where that expression is not NULL.",
+      "explanation": "This distinction matters for completeness metrics. COUNT(DISTINCT column) also ignores NULL in common SQL implementations; verify dialect details if needed.",
+      "example": "For four rows where email is NULL once, COUNT(*) is 4 and COUNT(email) is 3.",
+      "sampleCode": "SELECT COUNT(*) AS total_rows, COUNT(email) AS non_null_emails\nFROM customers;",
+      "commonMistakes": [
+        "Do not interpret COUNT(email) as the total number of source rows."
+      ],
+      "followUp": "How would you calculate the percentage of rows missing email?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-025",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "How do you find duplicate business keys in a table?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "practical",
+      "shortAnswer": "Group by the expected key and filter groups whose count is greater than one.",
+      "explanation": "Define the correct grain first. A repeated customer may be expected in an order-line table, while a repeated order-line key may be a defect.",
+      "example": "Find duplicate transaction IDs in a table that is supposed to contain one row per transaction.",
+      "sampleCode": "SELECT transaction_id, COUNT(*) AS row_count\nFROM transactions\nGROUP BY transaction_id\nHAVING COUNT(*) > 1;",
+      "commonMistakes": [
+        "Do not remove duplicates until you know whether they are valid repeated events."
+      ],
+      "followUp": "How would you identify which row to keep if duplicates are accidental?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "beginner",
+        "practical"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-026",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "What is the difference between filtering rows before aggregation and filtering groups after aggregation?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "WHERE filters input rows before grouping; HAVING filters grouped results after aggregate values are calculated.",
+      "explanation": "Use WHERE for conditions on individual records and HAVING for conditions such as group totals. SQL dialect rules may vary for aliases.",
+      "example": "Filter paid orders in WHERE, then keep only regions whose paid sales exceed 100000 using HAVING.",
+      "sampleCode": "SELECT department_id, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department_id\nHAVING COUNT(*) > 5;",
+      "commonMistakes": [
+        "Do not use an aggregate condition in WHERE in standard SQL."
+      ],
+      "followUp": "Write a query for departments with more than five employees.",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-027",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "How can NOT IN behave unexpectedly if a subquery returns NULL?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "A NULL in the NOT IN list can make comparisons unknown, causing rows to be filtered unexpectedly.",
+      "explanation": "A common alternative is NOT EXISTS, with the correlation key and NULL semantics reviewed for the database and data model.",
+      "example": "Use NOT EXISTS to find customers with no matching orders rather than relying on a subquery whose key may contain NULL.",
+      "sampleCode": "SELECT c.customer_id\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.customer_id = c.customer_id\n);",
+      "commonMistakes": [
+        "Do not assume NOT IN and NOT EXISTS always behave identically with NULLs."
+      ],
+      "followUp": "How would you test both queries on rows containing NULL keys?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "intermediate",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "sql-028",
+      "category": "sql",
+      "subcategory": "SQL",
+      "question": "When should you use ROW_NUMBER instead of RANK or DENSE_RANK?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "SQL Developer",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "ROW_NUMBER gives each row a unique sequence; RANK leaves gaps after ties; DENSE_RANK leaves no gaps.",
+      "explanation": "Choose the function based on whether ties should share a position. Add a deterministic ordering column when selecting a single row.",
+      "example": "For scores 100, 100, 90: ROW_NUMBER gives 1,2,3; RANK gives 1,1,3; DENSE_RANK gives 1,1,2.",
+      "sampleCode": "SELECT employee_id, salary,\n       DENSE_RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees;",
+      "commonMistakes": [
+        "Do not use ROW_NUMBER to imply tied values have genuinely different business ranks."
+      ],
+      "followUp": "How would you return the second distinct salary?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-postgres"
+      ],
+      "tags": [
+        "sql",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-015",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "How would you make XLOOKUP return a clear value when no match is found?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "practical",
+      "shortAnswer": "Use the optional if_not_found argument, or wrap the formula in IFNA/IFERROR when appropriate.",
+      "explanation": "Decide whether a missing match means “Not found”, blank, zero or a data-quality issue. Avoid silently converting all errors to a valid numeric value.",
+      "example": "`=XLOOKUP(A2,Products[SKU],Products[Price],\"Not found\")`",
+      "sampleCode": "=XLOOKUP(A2,Products[SKU],Products[Price],\"Not found\")",
+      "commonMistakes": [
+        "Do not hide unrelated formula errors as if they were simply missing keys."
+      ],
+      "followUp": "How would you report the number of rows that did not find a match?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "beginner",
+        "practical"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-016",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "Why might a PivotTable show old values after the source data changes?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "The PivotTable may need refreshing, and its source range or table may not include new rows.",
+      "explanation": "Check the data source, refresh behaviour and whether the source is an Excel Table that expands with added rows.",
+      "example": "Convert a fixed range into a table, add rows, then refresh the PivotTable and compare totals.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume every PivotTable refreshes automatically in every configuration."
+      ],
+      "followUp": "How would you validate the refreshed PivotTable against the source sum?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "beginner",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-017",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "How can you reconcile two spreadsheets when row order differs?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "practical",
+      "shortAnswer": "Match records using a stable business key, then compare the relevant values and count unmatched keys.",
+      "explanation": "Sorting row positions is not a safe reconciliation method when data can be missing or reordered. Use a key and report exceptions.",
+      "example": "Match invoice_id between the billing extract and finance file, then compare amount and date.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not compare row 12 with row 12 unless row position is a documented key."
+      ],
+      "followUp": "What would you do if the key is duplicated in one file?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "intermediate",
+        "practical"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-018",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "Which approach can help flag duplicate keys without deleting any rows?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "practical",
+      "shortAnswer": "Use conditional formatting, COUNTIF/COUNTIFS or a helper column to mark keys that repeat.",
+      "explanation": "Flag first, investigate the expected grain and decide whether duplicates represent repeated events or errors.",
+      "example": "`=COUNTIF($A:$A,A2)>1` flags a value in column A when it occurs more than once.",
+      "sampleCode": "=COUNTIF($A:$A,A2)>1",
+      "commonMistakes": [
+        "Do not remove records before confirming the business definition."
+      ],
+      "followUp": "How would you flag duplicates based on a combination of date and invoice number?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "beginner",
+        "practical"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-019",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "How should you handle dates stored as text in an imported report?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "data-cleaning",
+      "shortAnswer": "Parse or convert them using a known locale/format, then verify with representative dates and edge cases.",
+      "explanation": "Day/month ambiguity can silently swap values. Keep the original field or create a controlled transformed column during validation.",
+      "example": "Validate `03/04/2026` against the source format before deciding whether it means 3 April or March 4.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not apply a conversion without confirming locale and source format."
+      ],
+      "followUp": "How would you detect dates that failed conversion?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "intermediate",
+        "data-cleaning"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "excel-020",
+      "category": "excel",
+      "subcategory": "Excel & MIS",
+      "question": "How would you explain SUMIFS versus SUMIF?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "MIS / Reporting Analyst",
+        "BI Analyst",
+        "Business Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "SUMIF handles one criterion; SUMIFS can apply multiple criteria to the summed range.",
+      "explanation": "The criteria ranges in SUMIFS should align with the summed range. Use the version available in the target spreadsheet platform.",
+      "example": "Sum sales for the East region in April using region and month conditions.",
+      "sampleCode": "=SUMIFS(Sales[Amount],Sales[Region],H2,Sales[Month],I2)",
+      "commonMistakes": [
+        "Do not reverse the argument order between SUMIF and SUMIFS."
+      ],
+      "followUp": "How would you check that a multi-criteria result matches a filtered source total?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-excel"
+      ],
+      "tags": [
+        "excel",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-014",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "How can a calculated column and a measure return different results after a Power BI visual is filtered?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "A calculated column is computed for each row during data refresh; a measure is evaluated at query time in the current filter context.",
+      "explanation": "Choose a column for row-level attributes/grouping where needed and a measure for aggregations that respond to report filters. Performance and storage vary by model.",
+      "example": "A Margin column may calculate row margin; a Margin % measure can aggregate sales and costs for the selected period.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not define all KPIs as calculated columns by default."
+      ],
+      "followUp": "How can filter context change the output of the same measure?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-dax"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-015",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "Why is a star schema commonly recommended for a Power BI model?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "It separates descriptive dimensions from measurable fact rows and usually makes relationships and filter behaviour easier to reason about.",
+      "explanation": "Dimensions filter/group; facts store events at a defined grain. Avoid mixing multiple grains into one fact table without clear rules.",
+      "example": "A sales fact links to date, product, customer and region dimensions.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not create arbitrary many-to-many relationships to fix a flawed model without validating the data."
+      ],
+      "followUp": "How would you identify the grain of a sales fact table?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-model"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-016",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "What is filter context in DAX?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "It is the set of filters applied to a calculation by report selections, visuals, relationships and DAX expressions.",
+      "explanation": "Measures are recalculated under the active filter context. CALCULATE can modify that context; the result depends on the model and expression.",
+      "example": "Total Sales changes when a user filters the report to one region.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not explain filter context as only the slicer selection; visual grouping and relationships also matter."
+      ],
+      "followUp": "How does CALCULATE modify filter context?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-dax"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-017",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "What is the purpose of a dedicated date table?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "practical",
+      "shortAnswer": "It provides a consistent calendar dimension for time-based analysis and time-intelligence calculations.",
+      "explanation": "A complete date table should have a unique, continuous date column appropriate to the reporting range and should be related correctly to fact dates.",
+      "example": "Use the date table to compare current-month sales with the prior month.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume a date column with gaps always behaves like a complete calendar table."
+      ],
+      "followUp": "How would you validate that all fact dates map to the date dimension?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-dax",
+        "src-powerbi-model"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "practical"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-018",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "A slicer changes one chart but not another. What do you check first?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "Check visual interactions, relationships, disconnected tables and any measure logic that removes filters.",
+      "explanation": "Power BI allows interactions to be changed between visuals; DAX can also intentionally ignore a filter. Inspect both model and report settings.",
+      "example": "Verify Edit interactions and test the slicer with a simple count measure.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not immediately rebuild the report before checking interaction settings."
+      ],
+      "followUp": "How would you isolate whether the cause is the model or a visual interaction?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-model"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "powerbi-019",
+      "category": "powerbi",
+      "subcategory": "Power BI",
+      "question": "How would you investigate a scheduled dataset refresh failure?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Read the refresh error, inspect credentials/gateway/source availability and check whether schema or data changes occurred.",
+      "explanation": "Diagnose from the error and last successful refresh. Avoid claiming one root cause before checking logs and source connectivity.",
+      "example": "An Excel column was renamed, causing a Power Query step to fail after the source refresh.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not repeatedly trigger refreshes without investigating persistent failure."
+      ],
+      "followUp": "What evidence would you capture before escalating to an administrator?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-powerbi-model"
+      ],
+      "tags": [
+        "powerbi",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-011",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "What should you verify before creating a new Birst report for a business user?",
+      "difficulty": "Beginner",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Confirm the business question, KPI definition, date range, dimensions, data grain, filters and access needs.",
+      "explanation": "A good BI report begins with requirements and model understanding, not just selecting fields. Confirm the deployed tenant’s own setup and naming.",
+      "example": "For monthly sales by region, confirm whether returns and shipping are included and how month is defined.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not guess the definition of a measure from its label alone."
+      ],
+      "followUp": "How would you document the agreed KPI definition?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-start",
+        "src-birst-subject"
+      ],
+      "tags": [
+        "birst",
+        "beginner",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-012",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "What is a subject area used for in Birst?",
+      "difficulty": "Beginner",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "It organizes business-facing data objects so users can create reports around related dimensions and measures.",
+      "explanation": "Birst terminology and workflow depend on the environment/version. Check how the current model exposes attributes and measures to users.",
+      "example": "A sales subject area may expose product, date, region and sales measures relevant to sales analysis.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume every tenant exposes the same subject areas or field names."
+      ],
+      "followUp": "How would you confirm that a field belongs to the intended subject area?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-subject"
+      ],
+      "tags": [
+        "birst",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-013",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "How do you validate a Birst report when totals do not match a trusted source?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "Compare filters, row grain, joins/relationships, time boundaries, exclusions and measure logic using a small reconciled sample.",
+      "explanation": "Reconciliation should isolate whether the difference comes from source data, modeling, calculation or report configuration.",
+      "example": "Compare one month and one region first, then expand after line items and aggregation reconcile.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not change a dashboard total just to force a match without finding the cause."
+      ],
+      "followUp": "What evidence would help identify whether the mismatch originates upstream?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-start",
+        "src-birst-subject"
+      ],
+      "tags": [
+        "birst",
+        "intermediate",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-014",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "What information should you capture when reporting a slow Birst dashboard?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Record the report/page, filters, time range, affected user, reproducibility, data volume and timing.",
+      "explanation": "A useful incident report makes the issue repeatable and narrows whether the delay is broad or tied to a query/filter combination. Use available tenant diagnostics and documentation.",
+      "example": "Compare the same report with default filters versus a high-cardinality product selection.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not claim a performance root cause solely from a slow page."
+      ],
+      "followUp": "What controlled comparison could separate data-volume effects from rendering effects?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-start"
+      ],
+      "tags": [
+        "birst",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-015",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "How would you translate a stakeholder request into Birst report requirements?",
+      "difficulty": "Beginner",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Write the decision question, metric definitions, dimensions, filters, refresh timing, role access and acceptance checks.",
+      "explanation": "Make requirements testable before building. Confirm field availability and model design in the actual Birst environment.",
+      "example": "“Users can compare monthly actual sales by region; totals reconcile to the approved source and filters update all related visuals.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not promise a visual or measure before confirming source fields and access rules."
+      ],
+      "followUp": "Which acceptance criteria would you ask the stakeholder to approve?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-start",
+        "src-birst-subject"
+      ],
+      "tags": [
+        "birst",
+        "beginner",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "birst-016",
+      "category": "birst",
+      "subcategory": "Infor Birst",
+      "question": "What is the safe way to learn a Birst-specific query language feature you have not used?",
+      "difficulty": "Beginner",
+      "roles": [
+        "BI Analyst",
+        "Junior BI Developer",
+        "Data Analyst"
+      ],
+      "type": "learning-method",
+      "shortAnswer": "Use the official docs for the deployed version, try the smallest example in a safe environment and validate results against known data.",
+      "explanation": "Birst query and modeling functionality can be version/context specific. Clearly separate general SQL knowledge from hands-on Birst experience.",
+      "example": "Read the official BQL guidance, test a small select/filter on known rows and verify returned values.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not present generic SQL syntax as a Birst-specific feature without confirmation."
+      ],
+      "followUp": "What would you say in an interview if you have not used the feature hands-on?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-birst-bql"
+      ],
+      "tags": [
+        "birst",
+        "beginner",
+        "learning-method"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-017",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "How do you count missing values by column in a Pandas DataFrame?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "coding",
+      "shortAnswer": "Use isna().sum() to count missing entries in each column.",
+      "explanation": "Missing means depends on how source data encodes blanks, sentinel values and strings such as “N/A”. Normalize those before counting if appropriate.",
+      "example": "Run `df.isna().sum()` and compare critical columns against expected completeness thresholds.",
+      "sampleCode": "df.isna().sum()\n(df.isna().mean() * 100).round(2)",
+      "commonMistakes": [
+        "Do not assume empty strings are always interpreted as NaN."
+      ],
+      "followUp": "How would you calculate the percentage of missing values per column?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-pandas"
+      ],
+      "tags": [
+        "python",
+        "beginner",
+        "coding"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-018",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "What should you validate after merging two Pandas DataFrames?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "coding",
+      "shortAnswer": "Validate join keys, expected row counts, unmatched records, duplicate keys and resulting column values.",
+      "explanation": "The `validate` parameter can enforce expected merge cardinality such as one-to-one or many-to-one. Choose a relationship that matches the business grain.",
+      "example": "Use `indicator=True` to inspect rows matched only on the left or right.",
+      "sampleCode": "merged = facts.merge(dim, on=\"product_id\", how=\"left\", validate=\"many_to_one\", indicator=True)\nmerged[\"_merge\"].value_counts()",
+      "commonMistakes": [
+        "Do not assume a successful merge means every row matched correctly."
+      ],
+      "followUp": "How can `validate=\"many_to_one\"` catch a duplicate dimension key?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-pandas"
+      ],
+      "tags": [
+        "python",
+        "intermediate",
+        "coding"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-019",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "How would you remove duplicate rows but keep the latest record by timestamp?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "coding",
+      "shortAnswer": "Sort by the timestamp and use drop_duplicates with the correct key and keep policy.",
+      "explanation": "Specify the duplicate-defining columns, handle ties/null timestamps and validate the number of rows removed.",
+      "example": "Keep the most recent status for each customer_id based on updated_at.",
+      "sampleCode": "df = df.sort_values(\"updated_at\")\nlatest = df.drop_duplicates(subset=[\"customer_id\"], keep=\"last\")",
+      "commonMistakes": [
+        "Do not drop duplicates across every column if business duplicates are defined by only a few keys."
+      ],
+      "followUp": "How would you test two records with the same timestamp?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-pandas"
+      ],
+      "tags": [
+        "python",
+        "intermediate",
+        "coding"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-020",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "Why is vectorized Pandas code often preferred over iterating row by row?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Vectorized operations usually execute work in optimized array operations and are clearer for column-level transformations.",
+      "explanation": "Performance depends on operation and data size, but explicit Python loops over every row are often slower and harder to express. Use benchmarks for critical paths.",
+      "example": "Use `df[\"net\"] = df[\"sales\"] - df[\"returns\"]` instead of manually looping through every row.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not optimise blindly when a clear simple loop is appropriate for a tiny task."
+      ],
+      "followUp": "How would you benchmark two implementations on the same data?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-pandas"
+      ],
+      "tags": [
+        "python",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-021",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "How do you safely handle a file that may not exist in a data-cleaning script?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "debugging",
+      "shortAnswer": "Catch the expected file-not-found error, report the path clearly and stop or follow an explicit fallback policy.",
+      "explanation": "Avoid catching every exception and silently continuing with empty data, because that can publish false results.",
+      "example": "Raise a readable error stating which input CSV was missing instead of writing an empty dashboard.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not use a broad except block that hides a broken pipeline."
+      ],
+      "followUp": "What should the script log when an input fails validation?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-python"
+      ],
+      "tags": [
+        "python",
+        "beginner",
+        "debugging"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "python-022",
+      "category": "python",
+      "subcategory": "Python & Pandas",
+      "question": "What is the difference between merge, concat and join in Pandas?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Junior Data Engineer",
+        "BI Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "merge matches rows using keys; concat stacks or aligns objects along an axis; join is index-oriented by default.",
+      "explanation": "Check the axis, key columns/index, join type and row grain. Different operations can yield different row counts.",
+      "example": "Concatenate monthly extracts row-wise; merge a sales fact to product attributes by product_id.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not use concat when you need a key-based lookup."
+      ],
+      "followUp": "Which operation would combine the same schema from twelve monthly CSVs?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-pandas"
+      ],
+      "tags": [
+        "python",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-015",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "Actual sales are down 12% month over month. What do you check before explaining why?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "business-case",
+      "shortAnswer": "Validate the definition and data completeness, check seasonality/time-window comparability, then segment the change by drivers.",
+      "explanation": "A percentage change is an observed pattern, not a cause. Confirm late loads, refunds, calendar effects, filters and segment contributions.",
+      "example": "Compare same weekdays or seasonal periods, then break down sales by region, product and order count/average order value.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not attribute the decline to pricing based on a single chart."
+      ],
+      "followUp": "What evidence would help distinguish fewer orders from lower average order value?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "intermediate",
+        "business-case"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-016",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "How would you explain why correlation alone is insufficient evidence of causation in a KPI review?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Correlation means variables move together statistically; causation means a change in one variable causes a change in another.",
+      "explanation": "Confounding, reverse causality and selection effects can explain correlation. Use a suitable design and domain reasoning before making causal claims.",
+      "example": "Marketing spend and sales may rise together because both increase during seasonal peaks.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not say one metric “caused” another from correlation alone."
+      ],
+      "followUp": "What design could provide stronger evidence of causality?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-017",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "When is the median more useful than the mean?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "The median is often more representative when a distribution is skewed or contains extreme values.",
+      "explanation": "The mean uses all values and is useful for totals/expected value; median reflects the midpoint rank. Choose based on the question and distribution.",
+      "example": "Typical order value may be better described by median if a few unusually large orders pull the mean upward.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not treat median as always better than mean."
+      ],
+      "followUp": "How would you show both measures to explain a skewed distribution?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-018",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "A KPI differs across two dashboards. How do you reconcile it?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Align the metric definition, grain, source timing, filters, timezone, exclusions and aggregation, then compare a small sample.",
+      "explanation": "Dashboard differences may be valid if the definitions differ. Keep the agreed formula and owner documented after reconciliation.",
+      "example": "One dashboard counts order lines while another counts distinct orders; totals differ for multi-line orders.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume one chart is wrong before comparing its semantics."
+      ],
+      "followUp": "What documentation would prevent the same issue later?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-019",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "How do you decide whether an outlier should be removed from analysis?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Investigate the data source and business context first; correct/remove only when a documented rule justifies it.",
+      "explanation": "An outlier may be an error, a rare legitimate event or a high-value segment. Show sensitivity when the decision materially affects results.",
+      "example": "Check whether a large order is duplicated, valid or a special transaction before excluding it from an average.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not delete a valid point just because it changes the result."
+      ],
+      "followUp": "How would you present analysis with and without a disputed outlier?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "analytics-020",
+      "category": "analytics",
+      "subcategory": "Data Analysis & Statistics",
+      "question": "Why must a conversion rate have a clearly defined denominator?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "BI Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "A conversion rate depends on the population eligible to convert, the event definition and the observation window.",
+      "explanation": "Comparisons become misleading when one report uses sessions and another uses users, or windows differ.",
+      "example": "Purchases divided by unique eligible visitors is different from purchases divided by visits.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not compare percentages without confirming numerator and denominator."
+      ],
+      "followUp": "What denominator would suit a signup conversion KPI?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "analytics",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-011",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "What does idempotent mean in a data pipeline?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Rerunning the same operation with the same inputs should not create unintended duplicate effects or change the result unexpectedly.",
+      "explanation": "Idempotency is important for retries and recovery. Use stable keys, upserts or partition replacement where appropriate and validate edge cases.",
+      "example": "Reprocess a daily partition by replacing that partition instead of appending the same rows repeatedly.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume a job is idempotent because it usually runs only once."
+      ],
+      "followUp": "How would you test idempotency with a small input file?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills",
+        "src-job-engineer"
+      ],
+      "tags": [
+        "data-engineering",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-012",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "How is an incremental load different from a full load?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "A full load reads/replaces the complete target dataset; an incremental load processes only newly created or changed data based on a reliable change criterion.",
+      "explanation": "Incremental strategies require handling updates, late-arriving events, deletes and checkpoint recovery. Choose a trustworthy watermark/change key.",
+      "example": "Load records updated after the last watermark, then reconcile counts and handle late-arriving updates.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not use an unreliable timestamp as a watermark without understanding source guarantees."
+      ],
+      "followUp": "How would you handle a record updated after the watermark window?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills"
+      ],
+      "tags": [
+        "data-engineering",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-013",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "What information should a retry log include when a pipeline step fails?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Capture the run ID, step, timestamp, input/partition, attempt number, error message and whether retry is safe.",
+      "explanation": "Logs should help reproduce and diagnose the failure without exposing secrets or sensitive row data.",
+      "example": "Log source file name and record count, but not API credentials or full customer PII.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not retry indefinitely with no limit or backoff."
+      ],
+      "followUp": "When should a failed task stop retrying and alert an owner?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills",
+        "src-job-engineer"
+      ],
+      "tags": [
+        "data-engineering",
+        "beginner",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-014",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "What is schema drift and why can it break downstream reports?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Schema drift is an unexpected change in the structure or types of incoming data, such as a renamed or newly required column.",
+      "explanation": "A robust pipeline detects, documents and safely handles schema changes rather than silently dropping fields or mis-typing values.",
+      "example": "A source renames `order_total` to `total_amount`, causing a downstream transformation to fail.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume added columns are always harmless; stricter contracts may be needed."
+      ],
+      "followUp": "How would you notify downstream report owners of a breaking change?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills"
+      ],
+      "tags": [
+        "data-engineering",
+        "intermediate",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-015",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "What is the difference between batch processing and streaming?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Batch processes bounded groups of data on a schedule; streaming processes events continuously or in small increments with lower latency.",
+      "explanation": "The right choice depends on latency, cost, ordering, volume, processing guarantees and operational complexity.",
+      "example": "A daily finance report may use a batch load; a near-real-time alert may use a stream.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not use streaming for every use case if daily freshness is sufficient."
+      ],
+      "followUp": "What additional operational challenges come with streaming?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills"
+      ],
+      "tags": [
+        "data-engineering",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "data-engineering-016",
+      "category": "data-engineering",
+      "subcategory": "Junior Data Engineering",
+      "question": "Why should credentials be stored outside source code?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Junior Data Engineer",
+        "Data Analyst"
+      ],
+      "type": "security",
+      "shortAnswer": "Secrets in source code can leak through repository history, logs or copied bundles. Use environment-specific secret stores and least-privilege access.",
+      "explanation": "Static GitHub Pages exposes shipped JavaScript to every visitor; it cannot securely protect a private AI/database key. A backend is needed for private secret use.",
+      "example": "A public frontend can call a server endpoint; the server authenticates and uses a secret stored in its environment.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not put API keys in public JavaScript or commit history."
+      ],
+      "followUp": "What would you do if a secret was accidentally committed?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-de-skills"
+      ],
+      "tags": [
+        "data-engineering",
+        "beginner",
+        "security"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-013",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "How do you write acceptance criteria for a reporting requirement?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "requirements",
+      "shortAnswer": "Make each criterion observable and testable with clear inputs, expected output, filters and edge cases.",
+      "explanation": "Acceptance criteria reduce ambiguity and help analysts, developers and business users agree on “done.”",
+      "example": "“Selecting March and North region updates total sales and order count; both reconcile to the approved source within the agreed rule.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Avoid vague criteria such as “dashboard should be user-friendly.”"
+      ],
+      "followUp": "Who should approve the KPI definition and reconciliation tolerance?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "intermediate",
+        "requirements"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-014",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "Two stakeholders request conflicting definitions for the same KPI. What do you do?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Document both definitions, clarify decisions they support and get the accountable metric owner to approve a standard or labelled variants.",
+      "explanation": "Do not silently choose one. A single label with multiple calculations undermines trust.",
+      "example": "Define “active customer” separately for marketing and finance only if business owners agree and labels make it clear.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not publish incompatible metrics under identical names without disclosure."
+      ],
+      "followUp": "How would you manage the change if a definition is already in production?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-015",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "What should a reliable daily MIS report include besides the figures?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "Reporting period, source/freshness timestamp, metric definitions, exceptions/data-quality status and the intended audience/action.",
+      "explanation": "Context helps readers interpret changes and spot stale or incomplete data. Keep the report concise and avoid unnecessary decoration.",
+      "example": "A header shows report date and last refresh, followed by KPIs, variances, top exceptions and owner/actions.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not publish numbers without saying whether the data refresh completed."
+      ],
+      "followUp": "How would you show a partial-data warning without confusing users?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-016",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "How do you perform user acceptance testing (UAT) for a dashboard?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "testing",
+      "shortAnswer": "Use agreed scenarios and expected results, verify calculations and interactions with business users, log defects and obtain sign-off.",
+      "explanation": "UAT should validate real user requirements, not only that the page opens. Include normal cases, edge cases and access rules.",
+      "example": "Test a specific period/region, compare the KPI with a trusted total and check that slicers affect all intended visuals.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not call developer smoke testing the same as business UAT."
+      ],
+      "followUp": "What evidence should be stored for a failed acceptance criterion?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "intermediate",
+        "testing"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-017",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "What is the difference between a business requirement and a technical solution?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "concept",
+      "shortAnswer": "A business requirement states the need or outcome; a technical solution describes how the system will deliver it.",
+      "explanation": "Clarify the business problem first so the solution can change without losing the desired outcome.",
+      "example": "Requirement: identify delayed orders; solution: a report using promised date, ship date and an agreed delay rule.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not treat a requested chart type as the complete business need."
+      ],
+      "followUp": "What questions help uncover the decision behind the requested chart?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "beginner",
+        "concept"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "ba-mis-018",
+      "category": "ba-mis",
+      "subcategory": "Business Analyst & MIS",
+      "question": "A monthly report is frequently delayed. How would you investigate and improve it?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Business Analyst",
+        "MIS / Reporting Analyst",
+        "Data Analyst"
+      ],
+      "type": "scenario",
+      "shortAnswer": "Map the workflow and dependencies, measure delays, identify the bottleneck, then test one targeted improvement.",
+      "explanation": "Separate data availability delays from manual consolidation, validation, approvals and distribution. Set owners and track before/after timing.",
+      "example": "Measure when each source arrives; automate only a stable repetitive step after documenting reconciliation controls.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not automate a process before understanding whether its inputs are reliable."
+      ],
+      "followUp": "Which KPI would you track to confirm the process improved?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-analytics"
+      ],
+      "tags": [
+        "ba-mis",
+        "intermediate",
+        "scenario"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-009",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "How can you explain a technical idea when your English is limited?",
+      "difficulty": "Beginner",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Start with a short definition, use one familiar example and explain why it matters.",
+      "explanation": "Clarity matters more than complex vocabulary. Practise a structure you can reuse, but answer in your own words.",
+      "example": "“A PivotTable summarises data. For example, I can compare sales by region without manually adding every row.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not apologise repeatedly for your English before answering."
+      ],
+      "followUp": "Explain a KPI in two simple sentences.",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone",
+        "src-indeed"
+      ],
+      "tags": [
+        "english",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-010",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "What can you say when you need time to think during an interview?",
+      "difficulty": "Beginner",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "confidence-drill",
+      "shortAnswer": "Use one polite sentence to request a moment, then organize the answer.",
+      "explanation": "A brief pause is professional. You can repeat the main requirement, state assumptions and walk through the logic.",
+      "example": "“Let me think through the steps for a moment. I would first validate the data, then check the filters.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not stay silent for a long time without saying anything."
+      ],
+      "followUp": "Practise that sentence before answering a SQL question.",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "english",
+        "beginner",
+        "confidence-drill"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-011",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "How do you ask an interviewer to clarify an ambiguous question?",
+      "difficulty": "Beginner",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Repeat the part you understood and ask which condition or outcome they want you to focus on.",
+      "explanation": "Clarification demonstrates that you want to solve the right problem, not that you lack ability.",
+      "example": "“When you say latest record, should I select the newest timestamp for each customer?”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not assume an ambiguous metric or table grain."
+      ],
+      "followUp": "What if the interviewer says you should make a reasonable assumption?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "english",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-012",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "How can you keep a behavioural answer under one minute?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Give the situation briefly, your action clearly and the result/lesson in one or two sentences.",
+      "explanation": "Use STAR as a memory structure, not a script. Focus on what you personally did and keep the result honest.",
+      "example": "“The report totals disagreed (Situation). I compared filters and found a date mismatch (Action). We aligned the definition and documented the check (Result).”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not spend most of the answer explaining background."
+      ],
+      "followUp": "Try explaining a genuine learning experience using this structure.",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-indeed"
+      ],
+      "tags": [
+        "english",
+        "intermediate",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-013",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "How would you politely correct yourself after giving an incorrect answer?",
+      "difficulty": "Beginner",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Acknowledge the correction briefly and provide the updated reasoning.",
+      "explanation": "It is better to self-correct clearly than to defend a statement you now know is wrong.",
+      "example": "“Let me correct that: COUNT(column) excludes NULL values, while COUNT(*) counts the rows.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not pretend the answer did not change."
+      ],
+      "followUp": "How would you explain the reason for the correction?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone"
+      ],
+      "tags": [
+        "english",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "english-014",
+      "category": "english",
+      "subcategory": "English & Confidence",
+      "question": "How do you describe a skill without saying you are an expert?",
+      "difficulty": "Beginner",
+      "roles": [
+        "All target roles"
+      ],
+      "type": "spoken-answer",
+      "shortAnswer": "Use accurate level language such as familiar with, have practised, used regularly or experienced with—only when true.",
+      "explanation": "Specific examples give a recruiter a better signal than self-rated adjectives. Be ready to explain what you actually did.",
+      "example": "“I have practised Pandas cleaning and merge operations on portfolio datasets, and I am continuing to develop production-level skills.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not exaggerate your level just to sound confident."
+      ],
+      "followUp": "Which example supports your current SQL level?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-phone",
+        "src-indeed"
+      ],
+      "tags": [
+        "english",
+        "beginner",
+        "spoken-answer"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-011",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "How should you explain that a portfolio project uses synthetic data?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-integrity",
+      "shortAnswer": "State it openly, explain why it is used and focus on the analytical workflow, validation and product decisions it demonstrates.",
+      "explanation": "Synthetic data can show modeling and code structure, but it does not prove a real business result or production deployment.",
+      "example": "“The dataset is synthetic; I used it to demonstrate data cleaning, KPI definitions and a reproducible dashboard workflow.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not report synthetic sample values as real employer impact."
+      ],
+      "followUp": "What would you need to validate before applying the workflow to production data?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-sales-project",
+        "src-inventory-project",
+        "src-finance-project"
+      ],
+      "tags": [
+        "resume-project",
+        "beginner",
+        "project-integrity"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-012",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "How do you explain the limitations of a one-snapshot inventory dataset?",
+      "difficulty": "Beginner",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-deep-dive",
+      "shortAnswer": "It can describe risk at that snapshot, but cannot support a reliable historical trend without multiple comparable snapshots.",
+      "explanation": "A limitation is a chance to demonstrate analytical judgement. Be clear about what the evidence supports and what more data is needed.",
+      "example": "The inventory project has a snapshot by date × SKU × warehouse; a trend analysis would need snapshots across time.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not infer month-over-month stock trends from one date."
+      ],
+      "followUp": "What additional fields or snapshots would you request?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-inventory-project"
+      ],
+      "tags": [
+        "resume-project",
+        "beginner",
+        "project-deep-dive"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-013",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "How would you describe your role when part of a portfolio project was planned but not deployed?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-integrity",
+      "shortAnswer": "Separate implemented code, documented design, tested prototype and planned steps precisely.",
+      "explanation": "Interviewers may ask to see files or walk through the implementation. Use words like “blueprint” or “prototype” when that is the evidence.",
+      "example": "“The repository contains a Birst implementation blueprint; the custom GitHub Pages dashboard is a prototype, not a live Birst tenant.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not claim the plan was deployed into a production tenant if it was not."
+      ],
+      "followUp": "Which part of the project can you demonstrate working today?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-inventory-project",
+        "src-finance-project"
+      ],
+      "tags": [
+        "resume-project",
+        "intermediate",
+        "project-integrity"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-014",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "How would you walk through a project data model in an interview?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-deep-dive",
+      "shortAnswer": "State the grain of the fact table, describe dimension keys, explain relationships and name the main measures.",
+      "explanation": "The model explanation should show how aggregation works and how duplicates or missing relationships can affect results.",
+      "example": "Sales facts at transaction-line grain may relate to product and date dimensions; total revenue sums the defined eligible amount.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not describe tables without explaining what one row represents."
+      ],
+      "followUp": "How would you test whether a dimension key is unique?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-sales-project",
+        "src-inventory-project"
+      ],
+      "tags": [
+        "resume-project",
+        "intermediate",
+        "project-deep-dive"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-015",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "What can you safely claim if the repository has automated tests?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-integrity",
+      "shortAnswer": "Describe the exact tests you ran, the command, the result and the scope; distinguish code checks from browser/production tests.",
+      "explanation": "A passing unit test does not prove a whole site deployed successfully. Be explicit about what was and was not executed.",
+      "example": "“The analysis unit tests passed locally; the live Birst tenant and cross-device behaviour were not part of that test.”",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not claim “fully tested” based only on syntax checks."
+      ],
+      "followUp": "Which test would you add to catch a duplicate join?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-sales-project",
+        "src-inventory-project",
+        "src-finance-project"
+      ],
+      "tags": [
+        "resume-project",
+        "intermediate",
+        "project-integrity"
+      ],
+      "revisionStatus": "unseen"
+    },
+    {
+      "id": "resume-project-016",
+      "category": "resume-project",
+      "subcategory": "Resume & Portfolio Projects",
+      "question": "How should you answer a question about improving a project based on a real user need?",
+      "difficulty": "Intermediate",
+      "roles": [
+        "Data Analyst",
+        "BI Analyst",
+        "Business Analyst",
+        "Junior Data Engineer",
+        "MIS / Reporting Analyst"
+      ],
+      "type": "project-deep-dive",
+      "shortAnswer": "Name the user, pain point, proposed change, acceptance measure and how you would test it.",
+      "explanation": "This connects technical work to usability and business outcomes without claiming impact before it is measured.",
+      "example": "Reduce steps to find a delayed SKU and measure whether planners can locate the correct risk record in a usability test.",
+      "sampleCode": "",
+      "commonMistakes": [
+        "Do not claim saved hours or revenue improvement without measuring it."
+      ],
+      "followUp": "What test would show the proposed change is useful?",
+      "answerStructure": "Give the direct answer → explain the reasoning → use a concrete example → mention validation or a limitation where useful.",
+      "sourceRefs": [
+        "src-sales-project",
+        "src-inventory-project",
+        "src-finance-project"
+      ],
+      "tags": [
+        "resume-project",
+        "intermediate",
+        "project-deep-dive"
+      ],
+      "revisionStatus": "unseen"
+    }
+  ]
+}

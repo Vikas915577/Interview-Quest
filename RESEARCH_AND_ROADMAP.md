@@ -43,11 +43,11 @@ This is an **inferred learning order** based on the selected entry-level job des
 
 ## Gap analysis: supplied starter ZIP vs requested product
 
-The separate starter ZIP contains seven core files: HTML, CSS, a single JavaScript file, manifest, service worker, icon and README. The starter offers a mobile-first landing page, 9 practice modules, ChatGPT prompt buttons, a seven-day plan, simple local XP/session completion and basic service-worker caching. It is not the same as the remote repository: GitHub reports `Vikas915577/Interview-Quest` as a public repository with size 0 at inspection time. Therefore, no existing remote source files were overwritten; this release initializes the remote from the supplied starter concept with an expanded implementation.
+The separate starter ZIP contains seven core files: HTML, CSS, a single JavaScript file, manifest, service worker, icon and README. The starter offers a mobile-first landing page, 9 practice modules, ChatGPT prompt buttons, a seven-day plan, simple local XP/session completion and basic service-worker caching. It is not the same as the remote repository: The first metadata check reported size 0 before uploaded files appeared. A later repository content inspection found the app files at the root (flat layout). The confirmed flat-layout mismatch between root JSON and `./data/*.json` fetches explains the load error. GitHub write calls returned 403 for this integration, so this local patch has not been pushed from the tool.
 
 | Requirement | Supplied starter | This release | Remaining work |
 |---|---|---|---|
-| Separate learning tracks | 9 cards, small hard-coded sample questions | 12 tracks, 155 structured questions | Complete the requested 1,000-question bank in batches |
+| Separate learning tracks | 9 cards, small hard-coded sample questions | 12 tracks, 227 structured questions | Complete the requested 1,000-question bank in batches |
 | Question search/filter | Module search only | Search plus category, role, type, difficulty, bookmark, revision and unseen filters | Relevance tuning and large-bank performance audit |
 | Actual answer practice | Prompt is sent to external ChatGPT; no in-app answer session | Local one-question flow, reveal, self-review status and optional external ChatGPT prompt | True AI feedback needs a secured backend/API design |
 | Progress | XP, sessions and streak basics | Attempt/revision/bookmark state, goal, history, XP and backup/import | Browser-device only; cross-device sync needs backend |
@@ -77,7 +77,7 @@ Every question has: `id`, `category`, `subcategory`, `question`, `difficulty`, `
 
 ## 1,000-question expansion plan
 
-Current batch: 155 hand-authored records. Add further batches and run validation + editorial review after each rather than auto-filling hundreds of near-identical prompts.
+Current local bank: 227 distinct records across 12 tracks; the production target is 1,000. Add further batches and run validation + editorial review after each rather than auto-filling hundreds of near-identical prompts.
 
 | Batch | Added focus | Planned additions | Cumulative target |
 |---|---|---:|---:|

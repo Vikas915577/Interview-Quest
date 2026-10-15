@@ -56,6 +56,12 @@
       <section id="practice-view" class="view" aria-labelledby="practice-title">
         <div class="page-heading"><p class="kicker">YOUR TRAINING LIBRARY</p><h1 id="practice-title">Choose a practice track</h1><p>Har track ka alag focus hai. Ek waqt mein ek question solve karo.</p></div>
         <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English…" autocomplete="off"><kbd>/</kbd></label>
+        <section class="panel guided-path-launch">
+          <p class="kicker">STEP-BY-STEP PRACTICE</p><h2>Follow one learning path</h2>
+          <p class="muted-copy">Ek topic choose karo. Questions fixed order mein aayenge, previous/next se aage badho, aur completion tak path continue karo.</p>
+          <div class="path-launch-fields"><label class="field-label" for="path-category">Choose topic<select id="path-category" class="large-select"></select></label><label class="field-label" for="path-length">Path length<select id="path-length" class="large-select"><option value="5">5 questions</option><option value="10">10 questions</option><option value="all" selected>All questions in topic</option></select></label></div>
+          <button id="start-guided-path" class="btn btn-primary btn-wide" type="button">Start learning path →</button>
+        </section>
         <div id="all-modules" class="module-grid"></div>
         <p id="module-no-results" class="empty-state hidden">Koi matching topic nahi mila.</p>
       </section>

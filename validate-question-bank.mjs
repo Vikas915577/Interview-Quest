@@ -4,9 +4,9 @@ import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '..');
-const bankPath = path.join(root, 'data', 'questions.json');
-const sourcesPath = path.join(root, 'data', 'sources.json');
+const root = fs.existsSync(path.join(here, 'questions.json')) ? here : path.resolve(here, '..');
+const bankPath = fs.existsSync(path.join(root, 'data', 'questions.json')) ? path.join(root, 'data', 'questions.json') : path.join(root, 'questions.json');
+const sourcesPath = fs.existsSync(path.join(root, 'data', 'sources.json')) ? path.join(root, 'data', 'sources.json') : path.join(root, 'sources.json');
 const htmlPath = path.join(root, 'index.html');
 const appPath = path.join(root, 'app.js');
 const swPath = path.join(root, 'sw.js');
@@ -62,19 +62,27 @@ assert.deepEqual(missingCategories, [], `some app categories have no questions: 
 
 // Static JS-to-HTML reference audit; IDs created by the practice/mock templates are whitelisted.
 const htmlIds = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
-const dynamicIds = new Set(['candidate-answer','question-title','answer-reveal','reveal-answer','chatgpt-feedback','copy-coach-prompt','mark-mastered','mark-review','mock-answer','submit-mock-answer','mock-good','mock-review','mock-chatgpt','mock-review-weak','mock-again']);
+const dynamicIds = new Set(['candidate-answer','question-title','answer-reveal','reveal-answer','chatgpt-feedback','copy-coach-prompt','mark-mastered','mark-review','mock-answer','submit-mock-answer','mock-good','mock-review','mock-chatgpt','mock-review-weak','mock-again','voice-language','voice-status','speak-question','voice-answer','stop-voice','start-topic-path','path-prev','path-next','speak-answer']);
 const referencedIds = new Set([...app.matchAll(/getElementById\('([^']+)'\)/g)].map(m => m[1]));
 const missingIds = [...referencedIds].filter(id => !htmlIds.has(id) && !dynamicIds.has(id));
 assert.deepEqual(missingIds, [], `JavaScript references IDs missing from HTML/templates: ${missingIds.join(', ')}`);
 
-for (const asset of ['./index.html','./style.css','./app.js','./manifest.webmanifest','./icon.svg','./data/questions.json','./data/sources.json']) {
+for (const asset of ['./index.html','./style.css','./app.js','./manifest.webmanifest','./icon.svg']) {
   assert.ok(fs.existsSync(path.join(root, asset)), `missing app asset: ${asset}`);
-  assert.ok(sw.includes(asset), `service worker cache list misses ${asset}`);
+}
+assert.ok(fs.existsSync(bankPath), 'question bank must exist in either root or data/');
+assert.ok(fs.existsSync(sourcesPath), 'source catalog must exist in either root or data/');
+for (const asset of ['./questions.json','./sources.json','./data/questions.json','./data/sources.json']) {
+  assert.ok(sw.includes(asset), `service worker must support optional data path ${asset}`);
 }
 
 assert.ok(app.includes('interviewQuest.v1'), 'legacy progress migration key should be retained');
 assert.ok(app.includes('saveState'), 'local progress persistence should exist');
 assert.ok(app.includes('question-search') && app.includes('filter-category') && app.includes('filter-revision'), 'search/filter flows should exist');
+assert.ok(app.includes('fetchJsonFromFirstAvailable') && app.includes('./questions.json'), 'loader must support flat GitHub root files as well as /data files');
+assert.ok(app.includes('function startGuidedPath') && app.includes('function moveInPath'), 'guided step-by-step learning paths must exist');
+assert.ok(app.includes('function startVoiceInput') && app.includes('function speakText'), 'browser voice and read-aloud controls must exist');
+assert.ok(html.includes('id="start-guided-path"') && html.includes('id="path-category"'), 'guided path launcher must exist in HTML');
 assert.ok(!/sk-[A-Za-z0-9]{20,}/.test(app), 'an apparent API secret must not be committed in frontend code');
 
 console.log(`PASS: ${questions.length} questions; ${categoryCounts.size} categories; ${sourceIds.size} research sources.`);

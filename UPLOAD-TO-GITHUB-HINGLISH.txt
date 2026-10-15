@@ -1,0 +1,20 @@
+INTERVIEW QUEST v2.1.3 — GITHUB UPLOAD (HINDI/HINGLISH)
+
+Root cause fixed: the previous app fetched only ./data/questions.json and ./data/sources.json. Your repo is uploaded flat and has questions.json/sources.json in the root. This build supports BOTH layouts and uses service-worker cache v2.1.3.
+
+PHONE SE UPLOAD STEPS
+1. Download and extract Interview-Quest-v2.1.3-GitHub-Upload.zip.
+2. Open https://github.com/Vikas915577/Interview-Quest and select Add file → Upload files (Chrome Desktop site can help).
+3. Upload ALL files from this ZIP's root into the repository root, choosing Replace when asked. Do not upload the ZIP itself.
+4. Make one commit to main. Make sure index.html, app.js, style.css, sw.js, questions.json and sources.json are in repository root.
+5. Open Settings → Pages and confirm branch main / root. Visit the published URL.
+6. Refresh the site. If the old load-error remains, first export backup if possible, then clear this site's data in Chrome and reopen. The new service worker clears old Interview Quest caches on activation.
+
+FREE FEATURES
+- 227 question records across 12 tracks, search/filter/bookmark/revision, progress, backup, guided 5/10/all-question learning paths, next/previous, browser text-to-speech and speech-to-text when supported.
+- No paid API or key is required. Browser speech recognition may not exist in every browser/device; Gboard/Android keyboard microphone is a free fallback.
+- The static app does not provide real AI grading or cloud sync. ChatGPT opens separately; ChatGPT account/product access and any paid tier are separate from this static app.
+
+TEST STATUS
+- JavaScript syntax, bank validation, JSON validity, generator, duplicate IDs/text/source references, and local HTTP smoke checks can be run using commands in README.md.
+- Real Android browser, GitHub Pages deployment and offline restart must be confirmed after upload.

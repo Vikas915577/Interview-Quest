@@ -28,6 +28,8 @@ let returnTab = 'bank';
 let visibleLimit = PAGE_SIZE;
 let mockSession = null;
 let toastTimer = null;
+let activePath = null;
+let activeRecognition = null;
 
 function emptyState() {
   return {version:2, practiceLog:[], lifetimeXp:0, activityDates:[], attempts:{}, bookmarks:[], dailyGoal:5, theme:'dark', mockHistory:[]};
@@ -229,9 +231,110 @@ function renderQuestionBank(reset = true) {
   document.getElementById('load-more').textContent = `Load more (${Math.min(PAGE_SIZE,found.length-visibleLimit)} next)`;
 }
 function sourcesFor(q) { return (q.sourceRefs || []).map(sourceById).filter(Boolean); }
+function getCategoryQuestions(category) {
+  return questions.filter(q => q.category === category).sort((a,b) => a.id.localeCompare(b.id, undefined, {numeric:true}));
+}
+function startGuidedPath(categoryOverride = '') {
+  const categoryInput = document.getElementById('path-category');
+  const category = categoryOverride || categoryInput?.value || 'telephonic';
+  const all = getCategoryQuestions(category);
+  if (!all.length) { showToast('Is topic mein abhi questions available nahi hain.'); return; }
+  const firstUnseen = all.findIndex(q => !state.attempts[q.id]);
+  const start = firstUnseen >= 0 ? firstUnseen : 0;
+  const selectedLength = document.getElementById('path-length')?.value || 'all';
+  const desired = selectedLength === 'all' ? all.length : Math.max(1, Number(selectedLength) || 5);
+  // Keep a contiguous, ID-ordered path so the learner sees the concept progression.
+  let sequence = all.slice(start, start + desired);
+  if (!sequence.length) sequence = all.slice(0, Math.min(desired, all.length));
+  activePath = {category, ids: sequence.map(q => q.id), index: 0};
+  renderQuestion(activePath.ids[0], 'practice');
+  showToast(`${getTrack(category).title} path started: ${activePath.ids.length} step${activePath.ids.length === 1 ? '' : 's'}.`);
+}
+function moveInPath(delta) {
+  if (!activePath) return;
+  const next = activePath.index + delta;
+  if (next < 0) { showToast('Ye path ka pehla question hai.'); return; }
+  if (next >= activePath.ids.length) {
+    const finished = activePath;
+    activePath = null;
+    showTab('practice');
+    showToast(`${getTrack(finished.category).title} path complete. Tum next path ya revision choose kar sakte ho.`);
+    return;
+  }
+  activePath.index = next;
+  renderQuestion(activePath.ids[next], 'practice');
+}
+function selectedVoiceLanguage() {
+  return document.getElementById('voice-language')?.value || 'en-IN';
+}
+function speakText(text) {
+  if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
+    showToast('Read-aloud is not supported in this browser. Use your phone text-to-speech accessibility feature.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(String(text || ''));
+  utterance.lang = selectedVoiceLanguage();
+  utterance.rate = 0.88;
+  utterance.onstart = () => { const status = document.getElementById('voice-status'); if (status) status.textContent = 'Reading aloud…'; };
+  utterance.onend = () => { const status = document.getElementById('voice-status'); if (status) status.textContent = 'Read-aloud finished.'; };
+  utterance.onerror = () => { const status = document.getElementById('voice-status'); if (status) status.textContent = 'Audio could not play; try again.'; };
+  window.speechSynthesis.speak(utterance);
+}
+function startVoiceInput() {
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const textarea = document.getElementById('candidate-answer');
+  const status = document.getElementById('voice-status');
+  if (!textarea) return;
+  if (!Recognition) {
+    showToast('Voice typing is not supported by this browser. Use your Android keyboard mic or type your answer.');
+    if (status) status.textContent = 'Voice typing is unavailable in this browser. Android keyboard microphone is a free alternative.';
+    return;
+  }
+  if (activeRecognition) { try { activeRecognition.stop(); } catch (_) {} activeRecognition = null; }
+  const recognition = new Recognition();
+  activeRecognition = recognition;
+  recognition.lang = selectedVoiceLanguage();
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  let finalText = '';
+  recognition.onstart = () => { if (status) status.textContent = 'Listening… ab apna answer bolo.'; showToast('Listening started. Apna answer bolo.'); };
+  recognition.onresult = event => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const phrase = event.results[i][0]?.transcript || '';
+      if (event.results[i].isFinal) finalText += phrase;
+      else interim += phrase;
+    }
+    const existing = textarea.dataset.voiceBase || '';
+    const spoken = [finalText, interim].filter(Boolean).join(' ').trim();
+    textarea.value = [existing, spoken].filter(Boolean).join(existing && spoken ? ' ' : '');
+    if (status) status.textContent = interim ? `Recognizing: ${interim}` : 'Voice answer captured. Read it and edit mistakes before submitting.';
+  };
+  recognition.onerror = event => {
+    const readable = event.error === 'not-allowed' ? 'Microphone permission denied. Allow microphone access or use keyboard typing.' : `Voice input issue (${event.error || 'unknown'}). You can type instead.`;
+    if (status) status.textContent = readable;
+    showToast(readable);
+  };
+  recognition.onend = () => {
+    activeRecognition = null;
+    delete textarea.dataset.voiceBase;
+    if (status && status.textContent === 'Listening… ab apna answer bolo.') status.textContent = 'Listening stopped. Check your answer before submitting.';
+  };
+  textarea.dataset.voiceBase = textarea.value.trim();
+  try { recognition.start(); }
+  catch (_) { activeRecognition = null; delete textarea.dataset.voiceBase; showToast('Microphone could not start. Use keyboard mic or type your answer.'); }
+}
+function stopVoiceTools() {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if (activeRecognition) { try { activeRecognition.stop(); } catch (_) {} activeRecognition = null; }
+  const status = document.getElementById('voice-status');
+  if (status) status.textContent = 'Audio stopped.';
+}
 function renderQuestion(qid, tab = 'bank') {
   const q = questionsById.get(qid);
   if (!q) { showToast('Question nahi mila. Question bank refresh karke try karo.'); showTab('bank'); return; }
+  if (activePath) { const pathIndex = activePath.ids.indexOf(q.id); if (pathIndex >= 0) activePath.index = pathIndex; }
   currentQuestionId = q.id; returnTab = tab;
   const attempted = state.attempts[q.id];
   const savedStatus = attempted ? (attempted.status === 'mastered' ? 'Marked understood' : 'Saved for revision') : 'Not attempted yet';
@@ -241,14 +344,23 @@ function renderQuestion(qid, tab = 'bank') {
   const mistakes = (q.commonMistakes || []).map(x => escapeHtml(x)).map(x => `<li>${x}</li>`).join('');
   document.getElementById('question-detail').innerHTML = `
     <div class="question-head"><div class="row-between"><span class="question-id">${escapeHtml(q.id.toUpperCase())} · ${escapeHtml(savedStatus)}</span><button class="icon-button bookmark-toggle" type="button" data-bookmark="${q.id}" aria-label="${bookmarked?'Remove bookmark':'Bookmark question'}">${bookmarked?'★':'☆'}</button></div><div class="chips"><span class="chip accent">${escapeHtml(getTrack(q.category).title)}</span><span class="chip">${escapeHtml(q.difficulty)}</span><span class="chip">${escapeHtml(labelize(q.type))}</span></div><h1 id="question-title">${escapeHtml(q.question)}</h1><p class="muted-copy">Relevant roles: ${escapeHtml(q.roles.join(', '))}</p></div>
+    ${activePath && activePath.ids.includes(q.id) ? `<section class="panel guided-step"><div class="row-between"><div><p class="kicker">GUIDED LEARNING PATH</p><h2>${escapeHtml(getTrack(activePath.category).title)}</h2></div><span class="step-count">Step ${activePath.index + 1} / ${activePath.ids.length}</span></div><div class="progress-track"><span style="width:${Math.round(((activePath.index + 1) / activePath.ids.length) * 100)}%"></span></div><div class="button-row path-buttons"><button id="path-prev" class="btn btn-secondary" type="button" ${activePath.index === 0 ? 'disabled' : ''}>← Previous</button><button id="path-next" class="btn btn-primary" type="button">${activePath.index === activePath.ids.length - 1 ? 'Finish path ✓' : 'Next question →'}</button></div></section>` : `<section class="panel guided-step"><p class="kicker">LEARN IN ORDER</p><h2>Want to follow a complete path?</h2><p class="muted-copy">Start from the first unattempted question and follow this topic step by step.</p><button id="start-topic-path" class="btn btn-secondary" type="button">Start ${escapeHtml(getTrack(q.category).title)} path →</button></section>`}
+    <section class="panel voice-practice"><div class="row-between"><div><p class="kicker">FREE BROWSER VOICE TOOLS</p><h2>Speak your answer</h2></div><span class="voice-mark" aria-hidden="true">🎙️</span></div><p class="muted-copy">Read-aloud uses your browser. Speech-to-text depends on browser/device support and may require internet. No paid API is used.</p><label class="field-label" for="voice-language">Voice language</label><select id="voice-language" class="large-select"><option value="en-IN">English (India)</option><option value="en-US">English (US)</option><option value="hi-IN">Hindi</option></select><div class="button-row voice-buttons"><button id="speak-question" class="btn btn-secondary" type="button">🔊 Read question</button><button id="voice-answer" class="btn btn-primary" type="button">🎙️ Answer by voice</button><button id="stop-voice" class="btn btn-secondary" type="button">Stop audio</button></div><p id="voice-status" class="answer-hint" role="status" aria-live="polite">Voice input will put recognized words into your answer box. Check spelling and edit the answer.</p></section>
     <div class="answer-box"><label for="candidate-answer">Your answer (Hindi, Hinglish or English is okay)</label><textarea id="candidate-answer" placeholder="Pehle apna answer khud try karo…" rows="5" spellcheck="true" autocomplete="off"></textarea><p class="answer-hint">Answer is not saved to your history by default. Only your attempt status is saved on this device.</p></div>
     <div class="answer-actions"><button id="reveal-answer" class="btn btn-secondary" type="button">Reveal sample answer</button><button id="chatgpt-feedback" class="btn btn-primary" type="button">Ask ChatGPT for feedback ↗</button><button id="copy-coach-prompt" class="btn btn-secondary" type="button">Copy coach prompt</button></div>
-    <div id="answer-reveal" class="answer-reveal hidden"><span class="score-pill">Model answer · Review, not a guaranteed only answer</span><h2>Short answer</h2><p>${escapeHtml(q.shortAnswer)}</p><h2>Explanation</h2><p>${escapeHtml(q.explanation)}</p><h3>Practical example</h3><p>${escapeHtml(q.example)}</p>${code}<h3>Common mistakes to avoid</h3><ul>${mistakes}</ul><h3>Interviewer follow-up</h3><p>${escapeHtml(q.followUp)}</p><h3>Suggested answer structure</h3><p>${escapeHtml(q.answerStructure)}</p>${srcLinks ? `<h3>References</h3><p class="reference-links">${srcLinks}</p>` : ''}
+    <div id="answer-reveal" class="answer-reveal hidden"><span class="score-pill">Model answer · Review, not a guaranteed only answer</span><button id="speak-answer" class="btn btn-secondary" type="button">🔊 Read sample answer aloud</button><h2>Short answer</h2><p>${escapeHtml(q.shortAnswer)}</p><h2>Explanation</h2><p>${escapeHtml(q.explanation)}</p><h3>Practical example</h3><p>${escapeHtml(q.example)}</p>${code}<h3>Common mistakes to avoid</h3><ul>${mistakes}</ul><h3>Interviewer follow-up</h3><p>${escapeHtml(q.followUp)}</p><h3>Suggested answer structure</h3><p>${escapeHtml(q.answerStructure)}</p>${srcLinks ? `<h3>References</h3><p class="reference-links">${srcLinks}</p>` : ''}
       <div class="note-box">Offline practice does not automatically grade free-text answers. Compare your attempt with this guide. Use the ChatGPT button for optional external feedback.</div>
       <div class="quality-actions"><button id="mark-mastered" class="btn btn-mint" type="button">I understand this (+10 XP once/day)</button><button id="mark-review" class="btn btn-secondary" type="button">Needs revision (+10 XP once/day)</button></div>
     </div>
     <div class="plain-note">Source handling: content is a learning guide, not a claim that this exact wording is frequently asked. Use follow-up questions to check real understanding.</div>`;
   showTab('question');
+  document.getElementById('speak-question').addEventListener('click', () => speakText(q.question));
+  document.getElementById('voice-answer').addEventListener('click', startVoiceInput);
+  document.getElementById('stop-voice').addEventListener('click', stopVoiceTools);
+  document.getElementById('start-topic-path')?.addEventListener('click', () => startGuidedPath(q.category));
+  document.getElementById('path-prev')?.addEventListener('click', () => moveInPath(-1));
+  document.getElementById('path-next')?.addEventListener('click', () => moveInPath(1));
+  document.getElementById('speak-answer').addEventListener('click', () => speakText(`${q.shortAnswer}. ${q.explanation}. ${q.example}`));
   document.getElementById('reveal-answer').addEventListener('click', () => {
     document.getElementById('answer-reveal').classList.remove('hidden');
     document.getElementById('reveal-answer').textContent = 'Sample answer shown';
@@ -442,19 +554,39 @@ function validateQuestionBank(items) {
   });
   return errors;
 }
+async function fetchJsonFromFirstAvailable(paths, label) {
+  const failures = [];
+  for (const path of paths) {
+    try {
+      const response = await fetch(path, {cache:'no-cache'});
+      if (!response.ok) { failures.push(`${path}: HTTP ${response.status}`); continue; }
+      const type = response.headers.get('content-type') || '';
+      if (type.includes('text/html')) { failures.push(`${path}: server returned HTML, not JSON`); continue; }
+      try { return await response.json(); }
+      catch (_) { failures.push(`${path}: invalid JSON`); }
+    } catch (error) { failures.push(`${path}: ${error.message || 'network error'}`); }
+  }
+  throw new Error(`${label} could not load. Tried ${paths.join(', ')}. ${failures.join(' | ')}`);
+}
 async function init() {
   try {
-    const [qResponse,sResponse] = await Promise.all([fetch('./data/questions.json',{cache:'no-cache'}),fetch('./data/sources.json',{cache:'no-cache'})]);
-    if (!qResponse.ok) throw new Error(`Question bank load failed (${qResponse.status})`);
-    if (!sResponse.ok) throw new Error(`Research sources load failed (${sResponse.status})`);
-    const qJson = await qResponse.json(); sources = await sResponse.json();
+    // Supports both the structured /data/ layout and the flat root layout already uploaded to GitHub.
+    const [qJson,sourcesJson] = await Promise.all([
+      fetchJsonFromFirstAvailable(['./data/questions.json','./questions.json'], 'Question bank'),
+      fetchJsonFromFirstAvailable(['./data/sources.json','./sources.json'], 'Research sources')
+    ]);
+    sources = Array.isArray(sourcesJson) ? sourcesJson : (Array.isArray(sourcesJson.sources) ? sourcesJson.sources : []);
     questions = Array.isArray(qJson.questions) ? qJson.questions : [];
     const errors = validateQuestionBank(questions);
     if (errors.length) throw new Error(`Question bank validation failed: ${errors.slice(0,5).join('; ')}`);
     questionsById = new Map(questions.map(q=>[q.id,q]));
     state.bookmarks = state.bookmarks.filter(id=>questionsById.has(id));
     for (const id of Object.keys(state.attempts)) if (!questionsById.has(id)) delete state.attempts[id];
-    fillBankFilters(); applyTheme(); renderAll(); renderSources(); saveState(true);
+    fillBankFilters();
+    const pathCategory = document.getElementById('path-category');
+    if (pathCategory) pathCategory.innerHTML = TRACKS.map(t => `<option value="${t.id}">${escapeHtml(t.title)}</option>`).join('');
+    document.getElementById('start-guided-path')?.addEventListener('click', () => startGuidedPath());
+    applyTheme(); renderAll(); renderSources(); saveState(true);
     document.getElementById('bank-count').textContent = `${questions.length} questions`;
     const top = questions[0]; if (top) document.getElementById('start-today').addEventListener('click',()=>renderQuestion(chooseNextQuestion()?.id || top.id,'home'));
     document.getElementById('start-random').addEventListener('click',()=>{const q=questions[Math.floor(Math.random()*questions.length)];if(q)renderQuestion(q.id,'home');});
@@ -486,8 +618,8 @@ async function init() {
     console.error(error);
     document.getElementById('bank-count').textContent='Questions unavailable';
     document.getElementById('home-title').textContent='Question bank could not load';
-    const hero = document.querySelector('.hero > p'); if(hero) hero.textContent='Open the app through GitHub Pages or a local web server, not file://. If this continues, check that data/questions.json and data/sources.json are present.';
-    showToast('Load error: check project files or network, then refresh.');
+    const hero = document.querySelector('.hero > p'); if(hero) hero.textContent='Question data could not load. Open through GitHub Pages/HTTPS or a local web server (not file://), then verify questions.json and sources.json are in the repository root or in data/. Details are available in the browser console.';
+    showToast(`Load error: ${error.message || 'check data files and refresh'}`);
   }
 }
 function renderAll(){renderHome();renderTracks(document.getElementById('module-search').value);renderQuestionBank();renderProgress();}

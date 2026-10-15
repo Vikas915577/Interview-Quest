@@ -2,7 +2,9 @@ import json, re, unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-OUT = ROOT / 'data' / 'questions.json'
+DATA_DIR = ROOT / 'data'
+OUT = (DATA_DIR / 'questions.json') if DATA_DIR.exists() else (ROOT / 'questions.json')
+SOURCES_FILE = (DATA_DIR / 'sources.json') if (DATA_DIR / 'sources.json').exists() else (ROOT / 'sources.json')
 
 # Each entry is hand-authored. Question text, answer, explanation, example, pitfall,
 # and follow-up are deliberately specific; no question-count padding by exact duplicates.
@@ -227,7 +229,30 @@ assert len(ids)==len(set(ids)), 'duplicate IDs'
 assert len(normalized)==len(set(normalized)), 'duplicate question text'
 assert all(required == set(q) for q in questions), 'schema mismatch'
 assert all(q['question'].strip() and q['shortAnswer'].strip() and q['explanation'].strip() for q in questions)
-OUT.write_text(json.dumps({'schemaVersion':1,'generatedAt':'2026-10-15','questionCount':len(questions),'questions':questions},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print(f'Wrote {len(questions)} distinct questions to {OUT}')
+# Merge the separate, reviewed extension batch when present so regeneration never drops it.
+EXTRA = ROOT / 'data' / 'questions-extra.json'
+if not EXTRA.exists():
+    EXTRA = ROOT / 'questions-extra.json'
+if EXTRA.exists():
+    extension = json.loads(EXTRA.read_text(encoding='utf-8'))
+    extra_questions = extension.get('questions', [])
+    known_ids = {q['id'] for q in questions}
+    known_text = {' '.join(re.sub(r'[^a-z0-9 ]',' ',q['question'].lower()).split()) for q in questions}
+    for q in extra_questions:
+        assert q['id'] not in known_ids, f'duplicate ID in extension: {q["id"]}'
+        normal = ' '.join(re.sub(r'[^a-z0-9 ]',' ',q['question'].lower()).split())
+        assert normal not in known_text, f'duplicate question text in extension: {q["question"]}'
+        assert required == set(q), f'extension schema mismatch: {q.get("id")}'
+        assert all(src in {s['id'] for s in json.loads(SOURCES_FILE.read_text(encoding='utf-8'))} for src in q['sourceRefs']), f'unknown source reference: {q.get("id")}'
+        known_ids.add(q['id']); known_text.add(normal)
+    questions.extend(extra_questions)
+
+output = json.dumps({'schemaVersion':1,'generatedAt':'2026-10-15','questionCount':len(questions),'questions':questions},ensure_ascii=False,indent=2)+'\n'
+OUT.write_text(output,encoding='utf-8')
+# Also maintain the flat root aliases used when GitHub's mobile upload flattens folders.
+(ROOT / 'questions.json').write_text(output,encoding='utf-8')
+if SOURCES_FILE.exists():
+    (ROOT / 'sources.json').write_text(SOURCES_FILE.read_text(encoding='utf-8'),encoding='utf-8')
+print(f'Wrote {len(questions)} distinct questions to {OUT} and root alias')
 from collections import Counter
 print(json.dumps(Counter(q['category'] for q in questions),indent=2))

@@ -1,50 +1,35 @@
-# Implementation Report — Interview Quest v2.1.1
+# Implementation Report — Interview Quest v2.1.3
 
 **Date:** 15 October 2026
 
-## Repository and preservation decision
+## Confirmed repository state and root cause
 
-- Inspected the connected GitHub repository metadata for `Vikas915577/Interview-Quest`: it is public, its default branch is `main`, and GitHub reports size 0. That means the remote repository was empty at inspection time; there were no remote source files to overwrite.
-- Inspected the previous starter app package separately and compared the requested feature list with its static-app approach.
-- Read the public READMEs for Sales Performance Analytics, Infor Birst Inventory Analytics, and Finance KPI & Budget vs Actual Analytics. Project content in the question bank is careful not to convert synthetic sample results or Birst blueprints into claims of live employer outcomes.
+- Inspected `Vikas915577/Interview-Quest` on GitHub. It is public, default branch `main`, and now contains root-level `index.html`, `app.js`, `style.css`, `sw.js`, `questions.json`, `sources.json`, scripts and docs.
+- The live repository used a **flat root layout** for JSON, but the application previously requested only `./data/questions.json` and `./data/sources.json`. This path mismatch is the confirmed cause of the load error. The prior service worker also treated missing nested JSON files as cache-install assets; the refreshed worker makes question data optional and supports both layouts.
+- GitHub connector read access works, but a write attempt returned `403 Resource not accessible by integration`. The v2.1.3 files below are built and tested locally; the remote files have **not** been updated by this environment. Use the provided flat-layout upload ZIP to replace root files.
 
-## Changes in v2.1.1 package
+## Features in v2.1.3 package
 
-- Created a mobile-first static app with Home, Practice, Question Bank, Mock Interview, Progress and More sections.
-- Added 12 learning tracks and 155 structured questions in `data/questions.json`.
-- Added keyword search, relevance sorting, category/role/type/difficulty filters, bookmarks, revision and unseen filters, and incremental result loading.
-- Added one-question practice, delayed answer reveal, self-review buttons, mock sessions and self-rated summaries.
-- Added local XP/streak/daily-goal history, theme setting, backup export/import and legacy v1 local-progress migration.
-- Added separate ChatGPT opening/copy-prompt actions. The static application does not embed the private ChatGPT UI and does not claim in-app AI grading.
-- Added 21 research references, a research/gap analysis and a plan for expanding to at least 1,000 distinct questions in reviewable batches.
-- Added question-bank/static markup validation tests, source map and phone setup instructions.
-- Fixed one nested-list HTML rendering issue, improved search result relevance ordering and bumped the service-worker cache version.
+- 12 learning tracks with **227 distinct questions** across telephonic, HR, SQL, Excel, Power BI, Infor Birst, Python/Pandas, analytics/statistics, junior data engineering, BA/MIS, English/confidence, and resume/projects.
+- Topic-based guided paths with 5-question, 10-question or full-topic sequences, Previous/Next navigation and path completion. The sequence is sorted by stable numeric question IDs; it starts from the first not-yet-attempted question where possible.
+- Free browser read-aloud using `speechSynthesis`; browser speech-to-text when exposed by the browser. If unsupported, the UI explains the Android keyboard microphone fallback. No paid API key is required.
+- Load fallback tries both `./data/*.json` and root `./*.json`, rejects HTML as a JSON response, and displays a more useful error.
+- Service worker bumped to `interview-quest-v2.1.3`, safely caches whichever JSON layout exists and deletes previous app cache versions on activation.
+- Question generator merges `questions-extra.json` into the base bank and writes both nested and flat root aliases, avoiding the loss of the extension during regeneration.
+
+## Quality and honesty boundaries
+
+- Question-bank validator checked 227 question records, 12 categories and 21 source records. IDs and normalized question text are unique; required fields and source references validate.
+- `node --check app.js`, `node --check sw.js`, JSON parser checks, generator reproducibility and local HTTP checks were run successfully. See `TEST_REPORT.md` for exact scope.
+- Headless browser interaction testing was blocked by the environment; real Android browser, live deployment, and offline-after-restart remain UNTESTED.
+- This static app is free to host and does not need a paid AI API. Actual live AI grading, private ChatGPT embedding, cloud accounts/sync, and unrestricted two-way live AI voice are not included. Browser speech recognition support varies.
 
 ## Files
 
-- `index.html` — app structure and navigation.
-- `style.css` — responsive UI and theme styles.
-- `app.js` — client-side app, search, practice, mock flow, progress, import/export.
-- `data/questions.json` — 155 current questions.
-- `data/sources.json` — research references and caveats.
-- `sw.js`, `manifest.webmanifest`, `icon.svg` — PWA shell and static asset caching.
-- `make_bank.py` — source data generator for the current hand-authored question set.
-- `tests/validate-question-bank.mjs` — data and static-reference validator.
-- `docs/RESEARCH_AND_ROADMAP.md` — research, source links, gaps and 1,000-question rollout plan.
-- `docs/TEST_REPORT.md` — explicit pass/fail/blocked/untested statuses.
-- `docs/PHONE_SETUP_HINDI.md` — beginner-friendly setup and usage.
-
-## Current limitations and remaining work
-
-- This is **Phase 1 / foundation release**, not the complete 1,000-question product. The 1,000 count remains a target; only questions actually present in the bank are counted.
-- Answers are static learning references. Free-text answers are not automatically evaluated by a real AI service.
-- Progress uses browser localStorage; cross-device sync/accounts require a separate backend.
-- GitHub Pages has not been deployed from this package. The remote GitHub repository was empty at inspection; this environment has not uploaded the ZIP contents to the remote repository.
-- Headless browser test did not complete in this environment. Real-device navigation and offline cache tests are untested.
-
-## Next phase
-
-1. Upload the extracted ZIP contents to the root of `Vikas915577/Interview-Quest` and confirm the first GitHub Pages deployment.
-2. Test the deployed site on an Android phone and desktop browser; check search, bookmark, reveal, self-rating, mock flow, import/export, reload persistence and offline reopening.
-3. Add SQL question batch R2, run duplicate/schema/editorial checks and verify sample query logic/output.
-4. Continue with Excel/Power BI/Infor Birst, then Python/analytics/data engineering, then HR/English/project follow-ups until the 1,000-question goal is met with QA evidence.
+- `index.html`, `style.css`, `app.js`: application shell, visuals and practice logic.
+- `questions.json`, `sources.json`: flat-layout deployment copies.
+- `data/questions.json`, `data/sources.json`: structured development copies.
+- `data/questions-extra.json` (nested package) or root `questions-extra.json` (flat upload package): separate 72-question expansion batch; merged by `make_bank.py`.
+- `sw.js`: resilient service worker.
+- `make_bank.py`, `tests/validate-question-bank.mjs`: regeneration and QA.
+- `README.md`, `PHONE_SETUP_HINDI.md`, `RESEARCH_AND_ROADMAP.md`, `TEST_REPORT.md`: documentation.
