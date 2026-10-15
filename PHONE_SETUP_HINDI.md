@@ -2,7 +2,7 @@
 
 ## Pehle app ko apne phone par test karo
 
-1. `Interview-Quest-v2.1.3-GitHub-Upload.zip` download karo.
+1. `Interview-Quest-v2.2.0-GitHub-Upload.zip` download karo.
 2. Android Files app mein ZIP kholo aur **Extract** karo.
 3. Extracted folder mein `index.html`, `app.js`, `style.css`, `questions.json`, `sources.json` aur `questions-extra.json` dikhne chahiye. Is upload package mein JSON root par hai taaki GitHub mobile upload mein folder flatten hone se load error na aaye.
 4. `index.html` ko directly open karne se question data load nahi ho sakta, kyunki app JSON files fetch karti hai. Isliye test ke liye app ko HTTP server se serve karna hoga ya GitHub Pages par publish karna hoga.
@@ -38,7 +38,7 @@ GitHub ka mobile upload interface har Android/browser combination par folders ko
 - Phone screen, deployed GitHub Pages aur offline restart ka final test abhi pending hai. `docs/TEST_REPORT.md` mein exact status dekho.
 
 
-## v2.1.3: Load-error fix, expanded bank, guided path aur voice practice
+## v2.2.0: Simpler UI, guided path aur load-error fallback
 
 1. Practice tab kholo.
 2. “Follow one learning path” mein topic aur 5 / 10 / all questions choose karo. App mein abhi 227 distinct questions hain, 12 learning tracks mein.
@@ -51,5 +51,13 @@ GitHub ka mobile upload interface har Android/browser combination par folders ko
 ## Load error ko solve karne ke baad
 
 - App nested `data/questions.json`/`data/sources.json` aur root `questions.json`/`sources.json` dono layouts try karti hai.
-- Service-worker cache version `v2.1.3` hai; deployment ke baad site ko hard refresh karo. Agar error rahe, backup export karne ke baad Chrome site storage clear karke dobara kholo.
+- Service-worker cache version `v2.2.0` hai; deployment ke baad site ko hard refresh karo. Agar error rahe, backup export karne ke baad Chrome site storage clear karke dobara kholo.
 - Full AI voice conversation/free-text AI marking is static app mein nahi hai. Browser speech controls free hain; speech recognition browser/device par depend karti hai.
+
+## UI v2.2.0 mein kya simpler hua
+
+- Bottom navigation ab 4 items hai: Today, Learn, Mock, Progress. Settings top-right More mein hai.
+- Home par ek primary Start practice action hai; question bank aur topics secondary shortcuts se milte hain.
+- Question Bank mein advanced filters tabhi khulte hain jab user “Filters & sorting” expand kare.
+- Question page par voice tools aur extra examples collapsed rehte hain jab tak user unhe na khole.
+- Progress by topic, recent practice aur More settings expandable sections mein hain.

@@ -1,20 +1,20 @@
-INTERVIEW QUEST v2.1.3 — GITHUB UPLOAD (HINDI/HINGLISH)
+INTERVIEW QUEST v2.2.0 — GITHUB UPLOAD GUIDE (HINDI/HINGLISH)
 
-Root cause fixed: the previous app fetched only ./data/questions.json and ./data/sources.json. Your repo is uploaded flat and has questions.json/sources.json in the root. This build supports BOTH layouts and uses service-worker cache v2.1.3.
+Is update mein UI ko simple kiya gaya hai: 4 main tabs, less-congested Home, Learn path, collapsible Question Bank filters, clearer question page, bigger text/buttons aur updated service-worker cache. Question bank aur local progress logic preserve ki gayi hai.
 
-PHONE SE UPLOAD STEPS
-1. Download and extract Interview-Quest-v2.1.3-GitHub-Upload.zip.
-2. Open https://github.com/Vikas915577/Interview-Quest and select Add file → Upload files (Chrome Desktop site can help).
-3. Upload ALL files from this ZIP's root into the repository root, choosing Replace when asked. Do not upload the ZIP itself.
-4. Make one commit to main. Make sure index.html, app.js, style.css, sw.js, questions.json and sources.json are in repository root.
-5. Open Settings → Pages and confirm branch main / root. Visit the published URL.
-6. Refresh the site. If the old load-error remains, first export backup if possible, then clear this site's data in Chrome and reopen. The new service worker clears old Interview Quest caches on activation.
+1. Interview-Quest-v2.2.0-GitHub-Upload.zip download karke extract karo.
+2. GitHub par apna repository kholo: https://github.com/Vikas915577/Interview-Quest
+3. Add file > Upload files par jao. ZIP ke ANDAR ki files select karo; ZIP file ko directly upload mat karna.
+4. Root mein index.html, app.js, style.css, sw.js, manifest.webmanifest, icon.svg, questions.json, sources.json aur docs/ reports honi chahiye.
+5. Same-name core files ko replace karo. Agar tumne kisi file mein apne changes kiye hain, pehle backup ya compare kar lo.
+6. Commit changes.
+7. Settings > Pages mein main branch aur /(root) verify karo. Publish URL kholo.
+8. Site khulne ke baad refresh karo; cache refresh ke liye app version v2.2.0 hai. Agar purana UI rahe, pehle browser ko close/open aur hard refresh karo. Progress backup export karne se pehle site storage clear mat karna.
+9. Check: Today > Start practice; Learn > choose topic > Start path > Next; Questions > search/filter; Mock > finish; Progress; More > Export backup.
 
-FREE FEATURES
-- 227 question records across 12 tracks, search/filter/bookmark/revision, progress, backup, guided 5/10/all-question learning paths, next/previous, browser text-to-speech and speech-to-text when supported.
-- No paid API or key is required. Browser speech recognition may not exist in every browser/device; Gboard/Android keyboard microphone is a free fallback.
-- The static app does not provide real AI grading or cloud sync. ChatGPT opens separately; ChatGPT account/product access and any paid tier are separate from this static app.
-
-TEST STATUS
-- JavaScript syntax, bank validation, JSON validity, generator, duplicate IDs/text/source references, and local HTTP smoke checks can be run using commands in README.md.
-- Real Android browser, GitHub Pages deployment and offline restart must be confirmed after upload.
+IMPORTANT:
+- GitHub Pages par app ko static website ke roop mein host kiya jaata hai.
+- Progress current browser/device mein local save hoti hai; export/import backup use karo.
+- Voice typing support browser/device par depend karta hai. Voice icon kaam na kare toh Android keyboard microphone use kar sakte ho.
+- ChatGPT alag tab mein khulta hai. Full AI grading is free static build ka part nahi hai.
+- Automated local tests pass karna hosted, real phone testing ka replacement nahi hai. Actual URL phone par check karna zaroori hai.

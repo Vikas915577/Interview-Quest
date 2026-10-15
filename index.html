@@ -20,68 +20,81 @@
         <span class="brand-copy"><strong>Interview Quest</strong><small>One question at a time</small></span>
       </button>
       <div class="top-actions">
-        <span id="bank-count" class="bank-count">Loading questions…</span>
-        <a class="chatgpt-top" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT in a new tab">✳ ChatGPT</a>
+        <span id="bank-count" class="bank-count" aria-live="polite">Loading questions…</span>
+        <button class="top-more" type="button" data-tab="more" aria-label="Open settings and more"><span aria-hidden="true">☰</span><span>More</span></button>
       </div>
     </header>
 
     <main id="main-content" tabindex="-1">
       <section id="home-view" class="view active" aria-labelledby="home-title">
-        <div class="hero">
-          <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> YOUR PERSONAL PRACTICE SPACE</div>
-          <h1 id="home-title">Interview confidence,<br><span>one step at a time.</span></h1>
-          <p>Perfect English zaroori nahi. Pehle answer dena start karo — improvement practice se aayegi.</p>
-          <div class="hero-actions">
-            <button id="start-today" class="btn btn-primary btn-wide" type="button">Start today's mission <span aria-hidden="true">→</span></button>
-            <button id="start-random" class="btn btn-secondary" type="button">Random question</button>
+        <div class="welcome-block">
+          <p class="kicker">YOUR PERSONAL INTERVIEW COACH</p>
+          <h1 id="home-title">Interview confidence starts with one question.</h1>
+          <p>Perfect English zaroori nahi. Aaj sirf 5 minute practice karo — baaki step by step.</p>
+        </div>
+
+        <section class="next-step-card" aria-labelledby="next-step-title">
+          <div class="next-step-content">
+            <p class="kicker">YOUR NEXT STEP</p>
+            <h2 id="next-step-title">Start with one easy question</h2>
+            <p id="next-step-copy">Try a question in your own words, then compare it with the sample answer.</p>
           </div>
-          <div class="hero-foot"><span>⏱ 10–15 min/day</span><span>◎ Beginner friendly</span><span>↗ ChatGPT opens separately</span></div>
-        </div>
+          <button id="continue-learning" class="btn btn-primary btn-wide" type="button">Start practice →</button>
+        </section>
 
-        <div class="stats-row" aria-label="Your progress">
-          <article class="stat-card"><span class="stat-icon" aria-hidden="true">⚡</span><strong id="home-xp">0 XP</strong><small>Total XP</small></article>
-          <article class="stat-card"><span class="stat-icon" aria-hidden="true">🔥</span><strong id="home-streak">0 days</strong><small>Practice streak</small></article>
-          <article class="stat-card"><span class="stat-icon" aria-hidden="true">✓</span><strong id="home-mastered">0</strong><small>Marked understood</small></article>
-        </div>
+        <section class="daily-card" aria-label="Today's practice goal">
+          <div class="daily-card-top"><div><p class="kicker">TODAY'S GOAL</p><h2><span id="daily-done">0 / 5</span> questions</h2></div><span class="daily-icon" aria-hidden="true">✓</span></div>
+          <div class="progress-track"><span id="daily-progress"></span></div>
+          <p class="muted-copy">A small daily practice is enough to build momentum.</p>
+        </section>
 
-        <div class="section-heading"><div><p class="kicker">PICK UP WHERE YOU LEFT</p><h2>Practice tracks</h2></div><button class="text-button" type="button" data-tab="practice">See all →</button></div>
-        <div id="home-modules" class="module-grid compact-grid"></div>
-
-        <div class="two-col-section">
-          <section class="panel"><p class="kicker">YOUR NEXT STEP</p><h2 id="next-step-title">Start with one easy question</h2><p id="next-step-copy">Try a question, compare your answer with the sample, then mark it understood or save it for revision.</p><button id="continue-learning" class="btn btn-secondary" type="button">Continue learning →</button></section>
-          <section class="panel"><p class="kicker">DAILY TARGET</p><div class="goal-line"><strong id="daily-done">0 / 5</strong><span>questions attempted</span></div><div class="progress-track"><span id="daily-progress"></span></div><p class="muted-copy">XP is earned for an attempt, not for pretending an answer is correct.</p></section>
+        <div class="home-shortcuts" aria-label="Other ways to practise">
+          <button type="button" data-tab="practice" class="shortcut-row"><span class="shortcut-icon" aria-hidden="true">↗</span><span><strong>Explore learning paths</strong><small>Follow a topic from basics to interview level</small></span><span aria-hidden="true">→</span></button>
+          <button type="button" data-tab="bank" class="shortcut-row"><span class="shortcut-icon" aria-hidden="true">⌕</span><span><strong>Search all questions</strong><small>Find SQL, HR, Excel, BI and more</small></span><span aria-hidden="true">→</span></button>
+          <button type="button" data-tab="mock" class="shortcut-row"><span class="shortcut-icon" aria-hidden="true">◎</span><span><strong>Try a mock interview</strong><small>Practise a real interview-style session</small></span><span aria-hidden="true">→</span></button>
         </div>
+        <p class="home-reassurance">You can answer in Hindi, Hinglish or English. Your progress stays in this browser.</p>
       </section>
 
       <section id="practice-view" class="view" aria-labelledby="practice-title">
-        <div class="page-heading"><p class="kicker">YOUR TRAINING LIBRARY</p><h1 id="practice-title">Choose a practice track</h1><p>Har track ka alag focus hai. Ek waqt mein ek question solve karo.</p></div>
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English…" autocomplete="off"><kbd>/</kbd></label>
-        <section class="panel guided-path-launch">
-          <p class="kicker">STEP-BY-STEP PRACTICE</p><h2>Follow one learning path</h2>
-          <p class="muted-copy">Ek topic choose karo. Questions fixed order mein aayenge, previous/next se aage badho, aur completion tak path continue karo.</p>
-          <div class="path-launch-fields"><label class="field-label" for="path-category">Choose topic<select id="path-category" class="large-select"></select></label><label class="field-label" for="path-length">Path length<select id="path-length" class="large-select"><option value="5">5 questions</option><option value="10">10 questions</option><option value="all" selected>All questions in topic</option></select></label></div>
+        <div class="page-heading"><p class="kicker">LEARN STEP BY STEP</p><h1 id="practice-title">Choose your next path</h1><p>Ek topic choose karo. App tumhe question by question aage le jayegi.</p></div>
+
+        <section class="path-launch-card" aria-labelledby="path-launch-title">
+          <div class="path-launch-heading"><span class="path-launch-icon" aria-hidden="true">➜</span><div><p class="kicker">RECOMMENDED</p><h2 id="path-launch-title">Your learning path</h2></div></div>
+          <label class="field-label" for="path-category">What would you like to practise?</label>
+          <select id="path-category" class="large-select"></select>
+          <details class="path-length-details"><summary>Choose session length</summary><label class="field-label" for="path-length">Questions in this path<select id="path-length" class="large-select"><option value="5" selected>5 questions · quick practice</option><option value="10">10 questions · standard</option><option value="all">All questions in this topic</option></select></label></details>
           <button id="start-guided-path" class="btn btn-primary btn-wide" type="button">Start learning path →</button>
         </section>
+
+        <div class="section-heading explore-heading"><div><p class="kicker">FIND A TOPIC</p><h2>Explore all topics</h2></div><button type="button" class="text-button" data-tab="bank">Question bank →</button></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English…" autocomplete="off" aria-label="Search learning topics"></label>
         <div id="all-modules" class="module-grid"></div>
-        <p id="module-no-results" class="empty-state hidden">Koi matching topic nahi mila.</p>
+        <p id="module-no-results" class="empty-state hidden">Koi matching topic nahi mila. Doosra word try karo.</p>
       </section>
 
       <section id="bank-view" class="view" aria-labelledby="bank-title">
         <div class="page-heading"><p class="kicker">SEARCHABLE QUESTION BANK</p><h1 id="bank-title">Question bank</h1><p>Answers try karo, phir explanation dekho. Search, filter, bookmark aur revise kar sakte ho.</p></div>
         <label class="search-box"><span aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="Search a question or concept…" autocomplete="off"><kbd>/</kbd></label>
-        <div class="filters" aria-label="Question filters">
-          <label><span>Category</span><select id="filter-category"><option value="">All categories</option></select></label>
-          <label><span>Difficulty</span><select id="filter-difficulty"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
-          <label><span>Question type</span><select id="filter-type"><option value="">All types</option></select></label>
-          <label><span>Role</span><select id="filter-role"><option value="">All roles</option></select></label>
-        </div>
-        <div class="filter-actions">
-          <label class="check-filter"><input id="filter-bookmarks" type="checkbox"> Bookmarked</label>
-          <label class="check-filter"><input id="filter-revision" type="checkbox"> Needs revision</label>
-          <label class="check-filter"><input id="filter-unseen" type="checkbox"> Not attempted</label>
-          <button id="clear-filters" class="text-button" type="button">Clear filters</button>
-        </div>
-        <div class="results-heading"><strong id="question-results-count">Loading…</strong><label class="sort-label">Sort <select id="sort-questions"><option value="relevance">Relevance</option><option value="easy">Easiest first</option><option value="hard">Hardest first</option><option value="unseen">Unattempted first</option></select></label></div>
+        <details class="filter-drawer" id="filter-panel">
+          <summary><span>Filters & sorting</span><span class="filter-summary-note">Optional</span></summary>
+          <div class="filter-drawer-body">
+            <div class="filters" aria-label="Question filters">
+              <label><span>Category</span><select id="filter-category"><option value="">All categories</option></select></label>
+              <label><span>Difficulty</span><select id="filter-difficulty"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+              <label><span>Question type</span><select id="filter-type"><option value="">All types</option></select></label>
+              <label><span>Job role</span><select id="filter-role"><option value="">All roles</option></select></label>
+            </div>
+            <div class="filter-actions">
+              <label class="check-filter"><input id="filter-bookmarks" type="checkbox"> Bookmarked</label>
+              <label class="check-filter"><input id="filter-revision" type="checkbox"> Needs revision</label>
+              <label class="check-filter"><input id="filter-unseen" type="checkbox"> Not attempted</label>
+            </div>
+            <label class="sort-label sort-drawer-label" for="sort-questions">Sort questions<select id="sort-questions"><option value="relevance">Relevance</option><option value="easy">Easiest first</option><option value="hard">Hardest first</option><option value="unseen">Unattempted first</option></select></label>
+            <div class="filter-footer"><button id="clear-filters" class="text-button" type="button">Clear all filters</button><button type="button" class="btn btn-secondary filter-done" data-close-filters>Done</button></div>
+          </div>
+        </details>
+        <div class="results-heading"><strong id="question-results-count">Loading questions…</strong><button type="button" class="text-button result-back" data-tab="practice">Explore topics</button></div>
         <div id="question-results" class="question-results" aria-live="polite"></div>
         <div class="pagination-row"><button id="load-more" class="btn btn-secondary hidden" type="button">Load more questions</button></div>
         <p id="question-no-results" class="empty-state hidden">No questions match these filters. Try clearing one filter.</p>
@@ -118,40 +131,25 @@
           <section class="panel"><p class="kicker">CURRENT STREAK</p><strong id="progress-streak" class="big-stat">0 days</strong><p class="muted-copy">At least one question attempt on each consecutive local calendar day.</p></section>
           <section class="panel"><p class="kicker">DAILY GOAL</p><div class="goal-line"><strong id="progress-goal">0 / 5</strong><span>questions today</span></div><div class="progress-track"><span id="progress-goal-bar"></span></div><label class="field-label" for="daily-goal-setting">Questions per day</label><select id="daily-goal-setting" class="large-select"><option value="3">3</option><option value="5" selected>5</option><option value="8">8</option><option value="10">10</option></select></section>
         </div>
-        <div class="section-heading"><div><p class="kicker">TOPIC STATUS</p><h2>Progress by track</h2></div></div>
-        <div id="progress-by-track" class="progress-list"></div>
-        <div class="section-heading"><div><p class="kicker">RECENT WORK</p><h2>Recent attempts</h2></div></div>
-        <div id="recent-attempts" class="progress-list"></div>
+        <details class="content-accordion"><summary><span>Progress by topic</span><small>See all tracks</small></summary><div id="progress-by-track" class="progress-list"></div></details>
+        <details class="content-accordion"><summary><span>Recent practice</span><small>Review your history</small></summary><div id="recent-attempts" class="progress-list"></div></details>
       </section>
 
       <section id="more-view" class="view" aria-labelledby="more-title">
-        <div class="page-heading"><p class="kicker">SETTINGS & RESOURCES</p><h1 id="more-title">More</h1><p>Apna data safe rakho aur learning references yahan dekho.</p></div>
-        <section class="panel settings-panel">
-          <h2>Appearance</h2><p class="muted-copy">Choose a comfortable reading theme.</p>
-          <button id="theme-toggle" class="btn btn-secondary" type="button">Switch to light mode</button>
-        </section>
-        <section class="panel settings-panel">
-          <h2>Backup & recovery</h2><p class="muted-copy">Export practice history, bookmarks and revision status as JSON. Imported files are validated before applying.</p>
-          <div class="button-row"><button id="export-data" class="btn btn-primary" type="button">Export backup</button><label class="btn btn-secondary file-button" for="import-file">Import backup</label><input id="import-file" class="visually-hidden" type="file" accept="application/json,.json"></div>
-          <button id="reset-progress" class="btn btn-danger-ghost" type="button">Reset local progress</button>
-        </section>
-        <section class="panel settings-panel">
-          <h2>Open ChatGPT coach</h2><p class="muted-copy">ChatGPT opens in a separate tab. Prompt prefill is not a guaranteed public API; use the copy-prompt fallback if needed.</p><a class="btn btn-secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
-        </section>
-        <section class="panel settings-panel">
-          <h2>Research references</h2><p class="muted-copy">Documentation and career guides used to shape topic coverage. “Useful for” describes what the source supports; sources do not prove that each question is frequently asked.</p><div id="source-list" class="source-list"></div>
-        </section>
-        <section class="panel settings-panel"><h2>How evaluation works</h2><p class="muted-copy">Offline practice does not judge free-text answers. You compare your attempt with the model answer and mark it as understood or needing revision. Opening ChatGPT can provide separate feedback, subject to ChatGPT account and product behaviour.</p></section>
+        <div class="page-heading"><p class="kicker">PERSONALISE YOUR APP</p><h1 id="more-title">Settings & help</h1><p>App settings, backup aur learning references yahan milenge.</p></div>
+        <details class="settings-accordion"><summary><span>Appearance</span><small>Choose a theme</small></summary><div class="settings-accordion-body"><p class="muted-copy">Jo theme padhne mein comfortable lage use choose karo.</p><button id="theme-toggle" class="btn btn-secondary" type="button">Switch to light mode</button></div></details>
+        <details class="settings-accordion"><summary><span>Backup & recovery</span><small>Keep progress safe</small></summary><div class="settings-accordion-body"><p class="muted-copy">Practice history aur bookmarks ka JSON backup download karo. Import karne se pehle validation aur recovery backup hota hai.</p><div class="button-row"><button id="export-data" class="btn btn-primary" type="button">Export backup</button><label class="btn btn-secondary file-button" for="import-file">Import backup</label><input id="import-file" class="visually-hidden" type="file" accept="application/json,.json"></div><button id="reset-progress" class="btn btn-danger-ghost" type="button">Reset local progress</button></div></details>
+        <details class="settings-accordion"><summary><span>ChatGPT coach</span><small>Optional external feedback</small></summary><div class="settings-accordion-body"><p class="muted-copy">ChatGPT ek alag tab mein open hota hai. Prompt prefill work na kare toh question screen se “Copy coach prompt” use karo.</p><a class="btn btn-secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a><p class="muted-copy disclaimer">Static/free mode mein answer grading automatic nahi hoti. ChatGPT use karne ke liye uski account/access conditions apply hoti hain.</p></div></details>
+        <details class="settings-accordion"><summary><span>Research references</span><small>Official docs & guides</small></summary><div class="settings-accordion-body"><div id="source-list" class="source-list"></div></div></details>
+        <details class="settings-accordion"><summary><span>About & limitations</span><small>How practice works</small></summary><div class="settings-accordion-body"><p class="muted-copy">Offline practice mein free-text answers automatically grade nahi hote. Sample answer se compare karo aur “understood” ya “needs revision” mark karo. Progress isi browser mein localStorage ke through save hoti hai; regular backup export karo.</p></div></details>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Main navigation">
-      <button class="nav-item active" data-tab="home" type="button"><span aria-hidden="true">⌂</span><small>Home</small></button>
-      <button class="nav-item" data-tab="practice" type="button"><span aria-hidden="true">▦</span><small>Practice</small></button>
-      <button class="nav-item" data-tab="bank" type="button"><span aria-hidden="true">☷</span><small>Questions</small></button>
+      <button class="nav-item active" data-tab="home" type="button"><span aria-hidden="true">⌂</span><small>Today</small></button>
+      <button class="nav-item" data-tab="practice" type="button"><span aria-hidden="true">↗</span><small>Learn</small></button>
       <button class="nav-item" data-tab="mock" type="button"><span aria-hidden="true">◎</span><small>Mock</small></button>
-      <button class="nav-item" data-tab="progress" type="button"><span aria-hidden="true">↗</span><small>Progress</small></button>
-      <button class="nav-item" data-tab="more" type="button"><span aria-hidden="true">⋯</span><small>More</small></button>
+      <button class="nav-item" data-tab="progress" type="button"><span aria-hidden="true">◷</span><small>Progress</small></button>
     </nav>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

@@ -1,6 +1,6 @@
 /* Interview Quest service worker: resilient root/nested data paths and safe offline fallback. */
 'use strict';
-const CACHE_NAME = 'interview-quest-v2.1.3';
+const CACHE_NAME = 'interview-quest-v2.2.0';
 const CORE_FILES = ['./', './index.html', './style.css', './app.js', './manifest.webmanifest', './icon.svg'];
 const OPTIONAL_DATA = ['./questions.json', './sources.json', './data/questions.json', './data/sources.json'];
 self.addEventListener('install', event => {

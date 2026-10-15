@@ -1,6 +1,6 @@
 # Interview Quest — Interview Preparation Platform
 
-**Release:** v2.1.3 · **Research snapshot:** 15 October 2026 · **Hosting target:** GitHub Pages (static)
+**Release:** v2.2.0 · **Research snapshot:** 15 October 2026 · **Hosting target:** GitHub Pages (static)
 
 Interview Quest is a phone-first study app for entry-level Data Analyst, BI Analyst, MIS/Reporting Analyst, Business Analyst and Junior Data Engineer interviews. It is designed for short, repeated practice rather than long memorisation sessions.
 
@@ -16,6 +16,7 @@ Interview Quest is a phone-first study app for entry-level Data Analyst, BI Anal
 - Local XP, daily goal, activity streak, revision state, history and bookmarks.
 - JSON export/import with basic schema checks and a pre-import backup download.
 - Dark/light theme, responsive navigation, accessibility focus states and basic PWA/offline asset caching.
+- Calmer v2.2.0 UX: four primary tabs (Today, Learn, Mock, Progress), a single recommended Home action, fewer always-visible controls, collapsible advanced filters/settings, larger mobile text/tap targets, and a more focused question screen.
 - Research references, beginner instructions, QA scripts and phased plan to expand the bank.
 
 ## Important scope and truthfulness notes
@@ -26,6 +27,15 @@ Interview Quest is a phone-first study app for entry-level Data Analyst, BI Anal
 - The project does not include accounts, cloud sync, recruiter analytics, a server, or private API keys. Those require a separate, securely designed backend.
 - The portfolio-specific questions are based on public READMEs. They preserve the READMEs' disclosures that the sample metrics are synthetic and some Infor Birst implementations are blueprints rather than live tenant deployments.
 - SQL and BI examples use generic concepts and in places PostgreSQL-like syntax. Validate syntax against the database/Infor Birst version used in your interview.
+
+## v2.2.0 UX update and validation scope
+
+- Home is answer-first: one main action, daily goal, and three quiet shortcuts.
+- Navigation is reduced to four destinations. Question Bank stays available from Learn and Home; settings/resources live behind the header More action.
+- Advanced filters/sorting, question voice controls, answer extras, track history and settings are progressively disclosed instead of always occupying the screen.
+- Main body and control text are raised; bottom navigation labels are 11–12px on narrow phones and 12px by default. Common action targets are at least 44–48px tall.
+- The loader now tries the repository's flat root JSON paths first, then nested `data/` paths. This avoids a needless 404 on the actual flat-layout repository. The service-worker cache key is `interview-quest-v2.2.0`.
+- The test report distinguishes static/content/HTTP checks from browser visual tests. No release is described as bug-free without real-device and hosted checks.
 
 ## Run locally
 
@@ -40,7 +50,7 @@ Open `http://localhost:8000` from the `Interview-Quest` project directory.
 ## Publish with GitHub Pages (phone-friendly steps)
 
 1. Open the `Interview-Quest` repository on GitHub.
-2. For the current flat-layout repository and Android-friendly upload, download `Interview-Quest-v2.1.3-GitHub-Upload.zip`, extract it, and upload all files inside it to the repository root (replace files with the same names). The archive intentionally keeps `questions.json` and `sources.json` at root.
+2. For the current flat-layout repository and Android-friendly upload, download `Interview-Quest-v2.1.3-GitHub-Upload.zip`, extract it, and upload all files inside it to the repository root (replace files with the same names). The archive intentionally keeps `questions.json` and `sources.json` at root. The v2.2.0 cache key also changes so browsers can pick up the refreshed layout after deployment.
 3. Alternatively, for the full development package, upload the structured contents including `data/`, `docs/` and `tests/`.
 4. Open **Settings → Pages**.
 5. Under **Build and deployment**, select **Deploy from a branch**, choose `main` and `/(root)`, then save.
@@ -55,7 +65,10 @@ Requirements for the local checks: Node.js 18+ and Python 3.10+ (the static site
 ```bash
 node --check app.js
 node tests/validate-question-bank.mjs  # full project package
-node validate-question-bank.mjs       # flat GitHub upload package
+node validate-question-bank.mjs
+node tests/validate-ux.mjs
+node tests/loader-test.mjs
+python tests/smoke_http.py http://127.0.0.1:8765       # flat GitHub upload package
 python -m http.server 8000  # optional local HTTP serving check
 ```
 

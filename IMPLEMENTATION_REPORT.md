@@ -1,35 +1,42 @@
-# Implementation Report — Interview Quest v2.1.3
+# Implementation Report — Interview Quest v2.2.0
 
-**Date:** 15 October 2026
+**Research / code snapshot:** 15 October 2026  
+**Target:** Existing flat-layout repository `Vikas915577/Interview-Quest`, GitHub Pages-compatible static app.
 
-## Confirmed repository state and root cause
+## What changed
 
-- Inspected `Vikas915577/Interview-Quest` on GitHub. It is public, default branch `main`, and now contains root-level `index.html`, `app.js`, `style.css`, `sw.js`, `questions.json`, `sources.json`, scripts and docs.
-- The live repository used a **flat root layout** for JSON, but the application previously requested only `./data/questions.json` and `./data/sources.json`. This path mismatch is the confirmed cause of the load error. The prior service worker also treated missing nested JSON files as cache-install assets; the refreshed worker makes question data optional and supports both layouts.
-- GitHub connector read access works, but a write attempt returned `403 Resource not accessible by integration`. The v2.1.3 files below are built and tested locally; the remote files have **not** been updated by this environment. Use the provided flat-layout upload ZIP to replace root files.
+- Rebuilt the Home content hierarchy around one primary “Start practice” action, one daily goal indicator and three quiet shortcuts.
+- Reduced mobile bottom navigation from six destinations to four: Today, Learn, Mock and Progress. Question Bank is accessible through Today/Learn and still uses its own view. Settings/resources moved behind the header More action.
+- Replaced the always-open question filter controls with a native disclosure panel. Search and result count remain visible; advanced filters and sorting open only when needed.
+- Made the guided path launcher simpler: topic selector and primary start action stay visible; session length is inside an expandable option.
+- Simplified each question screen: topic and difficulty, prompt, answer field, optional voice tools, sample answer, and expandable example/mistakes/follow-up/reference content.
+- Converted settings and long Progress lists into expandable sections.
+- Increased body, question, input and button text sizes; increased common touch targets; bottom navigation labels are now readable and the mobile layout uses a simpler one-column topic list.
+- Loader now requests root `questions.json` / `sources.json` first (matching the actual repository), then falls back to nested `data/` paths. Service-worker cache key changed to `interview-quest-v2.2.0`.
+- Preserved the 227-question bank, 12 tracks, localStorage progress schema and v1 migration, theme, backup/import, bookmarks, revision, mock sessions, and browser voice tools.
 
-## Features in v2.1.3 package
+## Files changed
 
-- 12 learning tracks with **227 distinct questions** across telephonic, HR, SQL, Excel, Power BI, Infor Birst, Python/Pandas, analytics/statistics, junior data engineering, BA/MIS, English/confidence, and resume/projects.
-- Topic-based guided paths with 5-question, 10-question or full-topic sequences, Previous/Next navigation and path completion. The sequence is sorted by stable numeric question IDs; it starts from the first not-yet-attempted question where possible.
-- Free browser read-aloud using `speechSynthesis`; browser speech-to-text when exposed by the browser. If unsupported, the UI explains the Android keyboard microphone fallback. No paid API key is required.
-- Load fallback tries both `./data/*.json` and root `./*.json`, rejects HTML as a JSON response, and displays a more useful error.
-- Service worker bumped to `interview-quest-v2.1.3`, safely caches whichever JSON layout exists and deletes previous app cache versions on activation.
-- Question generator merges `questions-extra.json` into the base bank and writes both nested and flat root aliases, avoiding the loss of the extension during regeneration.
+- `index.html` — redesigned Home, Learn, Question Bank filters, Progress disclosures, More settings disclosures and four-tab navigation.
+- `app.js` — simplified Home renderer, resilient optional home IDs, root-first data loader, navigation active-state mapping for Question Bank/question details, filter drawer close/expand support, simplified question UI template.
+- `style.css` — calm mobile-first hierarchy, larger type/tap targets, concise topic rows, disclosures and four-item mobile navigation.
+- `sw.js` — updated cache name to force the v2.2.0 static shell/data cache to be distinct.
+- `manifest.webmanifest` — adjusted app description.
+- `validate-question-bank.mjs`, `tests/validate-question-bank.mjs`, `tests/validate-ux.mjs` — data/static/UI regression coverage.
+- `README.md`, `UPLOAD-TO-GITHUB-HINGLISH.txt`, `docs/PHONE_SETUP_HINDI.md`, `docs/TEST_REPORT.md` — deployment and test instructions.
 
-## Quality and honesty boundaries
+## Feature behavior / limitations
 
-- Question-bank validator checked 227 question records, 12 categories and 21 source records. IDs and normalized question text are unique; required fields and source references validate.
-- `node --check app.js`, `node --check sw.js`, JSON parser checks, generator reproducibility and local HTTP checks were run successfully. See `TEST_REPORT.md` for exact scope.
-- Headless browser interaction testing was blocked by the environment; real Android browser, live deployment, and offline-after-restart remain UNTESTED.
-- This static app is free to host and does not need a paid AI API. Actual live AI grading, private ChatGPT embedding, cloud accounts/sync, and unrestricted two-way live AI voice are not included. Browser speech recognition support varies.
+- ChatGPT opens separately. This static release does not integrate a private AI API and does not claim automatic AI scoring.
+- Browser speech synthesis can read questions/answers; speech recognition support varies by browser/device. Android keyboard voice typing is the fallback.
+- User progress persists to localStorage in the current browser/device. It is not cloud-synced.
+- GitHub Pages deployment and real-phone testing must be done after uploading the ZIP. Direct GitHub writes from this environment returned `403 Resource not accessible by integration`, so no remote publish is claimed.
 
-## Files
+## Status
 
-- `index.html`, `style.css`, `app.js`: application shell, visuals and practice logic.
-- `questions.json`, `sources.json`: flat-layout deployment copies.
-- `data/questions.json`, `data/sources.json`: structured development copies.
-- `data/questions-extra.json` (nested package) or root `questions-extra.json` (flat upload package): separate 72-question expansion batch; merged by `make_bank.py`.
-- `sw.js`: resilient service worker.
-- `make_bank.py`, `tests/validate-question-bank.mjs`: regeneration and QA.
-- `README.md`, `PHONE_SETUP_HINDI.md`, `RESEARCH_AND_ROADMAP.md`, `TEST_REPORT.md`: documentation.
+- Question-bank content/static validation: PASS.
+- JavaScript syntax checks: PASS.
+- HTML IDs/referenced assets and four-tab/UX invariants: PASS after validator update.
+- Local HTTP smoke test: PASS; all nine required routes returned HTTP 200, JSON parsed, and the bank count matched 227.
+- Chromium visual/browser automation: BLOCKED in this container; Chromium hung even with `about:blank` under headless execution. Do not interpret this as a passing browser test.
+- GitHub Pages and real Android test: UNTESTED pending upload.

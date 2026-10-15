@@ -1,53 +1,44 @@
-# Test Report — Interview Quest v2.1.3
+# Test Report — Interview Quest v2.2.0
 
-**Test date:** 15 October 2026  
-**Status:** Static/content checks PASS; browser/device and live deployment tests are not yet verified.
+**Date:** 15 October 2026  
+**Scope:** Static files, question-bank integrity, UI regression assertions, and local HTTP routes.  
+**Not claimed:** bug-free, hosted, real Android, or offline visual success.
 
-## Executed checks
+## Test summary
 
-| Check | Status | Evidence |
+| Test | Status | Details |
 |---|---|---|
-| JavaScript syntax (`node --check app.js`) | PASS | Run after the final app.js edits; exit code 0. |
-| Service-worker syntax (`node --check sw.js`) | PASS | Run after cache-version bump; exit code 0. |
-| Question-bank required fields, unique IDs and normalized question text | PASS | `node tests/validate-question-bank.mjs` checked all 227 records. |
-| Question-bank generator reproducibility | PASS | `python make_bank.py` regenerated 227 questions; SHA-256 before/after was measured during the final run and confirmed identical. |
-| Category/difficulty values, examples, follow-ups and source-reference integrity | PASS | Validator checked all 12 categories and all referenced source IDs. |
-| Static HTML element IDs, expected asset references, service-worker cache list and legacy storage migration marker | PASS | Covered by the validator script. |
-| Local HTTP smoke check for `/`, `index.html`, `style.css`, `app.js`, `data/questions.json`, `data/sources.json`, `sw.js`, `manifest.webmanifest`, `icon.svg` | PASS | All 9 paths returned 200 in the nested layout. A separate no-`data/` flat-layout smoke test returned 200 for all root assets/JSON, with `/data/questions.json` returning the expected 404 that the app loader now falls back from. |
-| Browser automation / full DOM interaction | BLOCKED | A headless Chromium attempt did not complete in this environment; no browser PASS is claimed. |
-| Android real-device usability | UNTESTED | Requires opening the deployed site on a real Android phone. |
-| GitHub Pages deployment | UNTESTED | The remote repository contains the previous flat-layout build; GitHub connector write calls returned 403, so this v2.1.3 build has not been pushed from this environment. |
-| Service-worker offline reopening/update behaviour | UNTESTED | Requires HTTPS deployment and a browser cache/offline test. |
-| Cross-device progress sync and in-app AI grading | NOT IMPLEMENTED | Static/local-only release; no cloud backend or real AI grader is claimed. |
+| JavaScript syntax (`node --check app.js`) | PASS | Script parses without syntax errors. |
+| Loader regression tests | PASS | Unit tests cover root JSON, nested fallback, HTML 404, and complete failure diagnostics. |
+| HTML/CSS parsing | PASS | BeautifulSoup found 65 unique IDs with no duplicates; TinyCSS2 reported no CSS parse errors. |
+| Question bank schema and unique text/IDs | PASS | 227 questions; 12 categories; required answers/examples/follow-ups and source IDs checked. |
+| Static DOM ID reference audit | PASS | Required static and dynamically generated IDs are present or documented as optional. |
+| UX structural regression tests | PASS | `node tests/validate-ux.mjs` passed for four-tab navigation, collapsed filters/settings, simplified Home and readable controls. |
+| Asset/data HTTP smoke test | PASS | Local server on port 8765: all 9 routes returned HTTP 200 and both JSON data files parsed; question count = 227. |
+| Chromium headless visual smoke test | BLOCKED | Chromium did not complete even for `about:blank` in this container; no screenshot or interactive-browser pass is claimed. |
+| Live GitHub Pages deploy | UNTESTED | GitHub content write integration returned 403; user must upload release ZIP. |
+| Real Android phone layout/voice | UNTESTED | Requires post-upload check on target phone/browser. |
+| Offline service-worker reopening | UNTESTED | Must be tested after deployment over HTTPS. |
 
-## Bug fixes in this pass
+## v2.2.0 UX regression checks
 
-- Fixed nested list markup in the common-mistakes section.
-- Added basic relevance ordering for question searches instead of sorting search results only by ID.
-- Removed a duplicate role-filter exclusion condition.
-- Bumped the service-worker cache key to `interview-quest-v2.1.3` so an eventual deployment can distinguish this patch from an earlier cache.
+- Bottom navigation has exactly four primary items (Today, Learn, Mock, Progress).
+- Question Bank remains discoverable through Home/Learn and keeps search visible.
+- Advanced filters/sorting are contained in a closed `details` panel by default.
+- Settings and long progress lists use expandable panels.
+- `app.js` references the flat root question/source JSON first and then nested `/data/` fallback paths.
+- Service-worker cache name is bumped to `interview-quest-v2.2.0`.
+- No frontend secret/API key pattern should appear.
 
-## What PASS means
+## Manual test checklist after upload
 
-PASS means the stated check was executed and succeeded. HTTP 200 does not prove that every button works. BLOCKED means a test attempt could not finish in this environment. UNTESTED means no execution is claimed. Do not describe the application as fully QA-certified until a browser test, actual GitHub Pages deployment, Android test and offline test are completed.
-
-
-## v2.1.2 targeted regression checks (preserved)
-
-- Added validation coverage for the guided-path launcher and browser-native voice controls.
-- Added loader fallback paths for both `/data/*.json` and root-level `*.json` files.
-- Added root aliases of the 227-question bank and 21-source catalog for repositories uploaded as flat files.
-- Replaced the service worker so installation is not blocked by a missing optional `data/` folder, and offline data requests never receive `index.html` as JSON. Non-JSON asset failures now return a normal fetch error instead of a misleading JSON body.
-- Voice recognition remains browser/device-dependent and is reported as such; it is not considered a universal PASS.
-
-
-## v2.1.3 targeted regression checks
-
-- Confirmed GitHub's root directory contains `questions.json` and `sources.json`, while the previous loader only fetched `./data/*.json`; fallback now tries nested and flat paths.
-- Generator now loads the 72-question expansion batch and regenerates both root and nested bank copies; two consecutive runs produced the same SHA-256 (`56d3ce684277b638963bb5e2baef6f70042df0010002ffe0f25f21b0a547420b`).
-- The service worker only emits its JSON error payload for failed `.json` requests; other missing assets fail normally.
-- Guided paths select 5, 10 or all questions for a chosen topic, in stable question-ID order.
-- Voice recognition uses native browser capability only; support is not uniform and is not marked universally PASS.
-- Mocked loader test: PASS; a simulated 404 for `./data/questions.json` correctly fell back to valid root `./questions.json`.
-- Flat-layout package: PASS for bank-validator, generator, JavaScript syntax and local HTTP 200 on root assets/JSON. The expected missing `/data/questions.json` route returned 404, then app fallback test passed.
-- Remote write/deploy: BLOCKED by connector 403.
+1. Open the Pages URL in Chrome on a phone. Confirm question count loads and no load-error message appears.
+2. Today: tap Start practice, answer, show the sample, and mark understood/revision.
+3. Learn: select Telephonic or SQL, start a 5-question path, use Next/Previous, finish the path.
+4. Question Bank: search “JOIN”, open Filters & sorting, choose category/difficulty, clear filters, load more.
+5. Mock: run a 5-question session, enter an answer, self-rate, finish and revisit revision.
+6. Progress: refresh; confirm attempts/XP/bookmarks remain. Export backup and verify the downloaded JSON parses.
+7. More: switch theme, export/import a small test backup, inspect research references.
+8. Voice: read the question aloud; if speech recognition is unavailable, verify the UI explains keyboard microphone fallback.
+9. Test viewport widths 320, 360, 390, 430 and desktop. Confirm no horizontal scrolling, no tiny nav labels and bottom nav does not cover buttons.
+10. Once question data is loaded, enable offline mode and reopen the page. Record result separately; do not clear storage until progress is backed up.

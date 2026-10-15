@@ -1,7 +1,7 @@
 {
   "name": "Interview Quest — Interview Preparation",
   "short_name": "Interview Quest",
-  "description": "A mobile-first interview practice platform for HR, telephonic, SQL, Excel, Power BI, Infor Birst, Python and analytics.",
+  "description": "A calmer, mobile-first interview practice platform for HR, telephonic, SQL, Excel, Power BI, Infor Birst, Python and analytics.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

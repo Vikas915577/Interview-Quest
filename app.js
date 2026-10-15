@@ -154,19 +154,18 @@ function moduleCard(track) {
   return `<button class="module-card" type="button" data-category="${track.id}" aria-label="Open ${escapeHtml(track.title)} questions"><div class="module-top"><span class="module-icon" aria-hidden="true">${track.icon}</span><span class="module-time">${track.time}</span></div><h3>${escapeHtml(track.title)}</h3><p>${escapeHtml(track.short)}</p><div class="module-bottom"><span>${count} questions · ${tried} tried</span><span aria-hidden="true">→</span></div></button>`;
 }
 function renderHome() {
-  document.getElementById('bank-count').textContent = `${questions.length} questions`;
-  document.getElementById('home-xp').textContent = `${getXp()} XP`;
-  document.getElementById('home-streak').textContent = `${getStreak()} ${getStreak() === 1 ? 'day' : 'days'}`;
-  document.getElementById('home-mastered').textContent = `${getMasteredCount()}`;
-  document.getElementById('home-modules').innerHTML = TRACKS.slice(0,4).map(moduleCard).join('');
-  const q = questions.find(x => !state.attempts[x.id]) || questions[0];
-  document.getElementById('start-today').innerHTML = `Start today's mission <span aria-hidden="true">→</span>`;
-  document.getElementById('next-step-title').textContent = getRevisionIds().length ? 'Revise one weak question' : (q ? `Next: ${getTrack(q.category).title}` : 'Keep practising');
-  document.getElementById('next-step-copy').textContent = getRevisionIds().length ? 'A short repeat session is better than rereading everything. Try to answer before opening the explanation.' : 'Answer a question in your own words, reveal the model answer, and mark your self-review.';
-  document.getElementById('continue-learning').textContent = getRevisionIds().length ? 'Revise a weak question →' : 'Continue learning →';
+  const count = document.getElementById('bank-count');
+  if (count) count.textContent = `${questions.length} questions`;
+  const q = chooseNextQuestion();
+  const title = document.getElementById('next-step-title');
+  if (title) title.textContent = getRevisionIds().length ? 'Revise one question you found difficult' : (q ? `Next: ${getTrack(q.category).title}` : 'You are ready to practise');
+  const copy = document.getElementById('next-step-copy');
+  if (copy) copy.textContent = getRevisionIds().length ? 'Start with a question from your revision list. A short repeat is better than rereading everything.' : 'Try an answer in your own words. Reveal the sample only after you have given it a go.';
+  const continueButton = document.getElementById('continue-learning');
+  if (continueButton) continueButton.textContent = getRevisionIds().length ? 'Start revision →' : 'Start practice →';
   const done = attemptsToday(), goal = state.dailyGoal;
-  document.getElementById('daily-done').textContent = `${Math.min(done,goal)} / ${goal}`;
-  document.getElementById('daily-progress').style.width = `${Math.min(100, done / goal * 100)}%`;
+  const dailyDone = document.getElementById('daily-done'); if (dailyDone) dailyDone.textContent = `${Math.min(done,goal)} / ${goal}`;
+  const dailyProgress = document.getElementById('daily-progress'); if (dailyProgress) dailyProgress.style.width = `${Math.min(100, done / goal * 100)}%`;
 }
 function renderTracks(filter = '') {
   const needle = filter.trim().toLowerCase();
@@ -178,7 +177,7 @@ function questionCard(q) {
   const attempted = state.attempts[q.id];
   const status = attempted ? (attempted.status === 'mastered' ? 'Understood' : 'Needs revision') : 'Not attempted';
   const bookmarked = state.bookmarks.includes(q.id);
-  return `<article class="question-result"><div class="question-result-main"><button class="question-open" type="button" data-question="${q.id}">${escapeHtml(q.question)}</button><div class="chips"><span class="chip accent">${escapeHtml(getTrack(q.category).title)}</span><span class="chip">${escapeHtml(q.difficulty)}</span><span class="chip">${escapeHtml(labelize(q.type))}</span><span class="chip">${escapeHtml(status)}</span></div><p>${escapeHtml(q.shortAnswer)}</p></div><button class="icon-button bookmark-toggle" type="button" data-bookmark="${q.id}" aria-label="${bookmarked ? 'Remove bookmark' : 'Bookmark question'}" title="${bookmarked ? 'Remove bookmark' : 'Bookmark question'}">${bookmarked ? '★' : '☆'}</button></article>`;
+  return `<article class="question-result"><div class="question-result-main"><button class="question-open" type="button" data-question="${q.id}">${escapeHtml(q.question)}</button><div class="chips"><span class="chip accent">${escapeHtml(getTrack(q.category).title)}</span><span class="chip">${escapeHtml(q.difficulty)}</span><span class="chip status-chip">${escapeHtml(status)}</span></div><p>${escapeHtml(q.shortAnswer)}</p></div><button class="icon-button bookmark-toggle" type="button" data-bookmark="${q.id}" aria-label="${bookmarked ? 'Remove bookmark' : 'Bookmark question'}" title="${bookmarked ? 'Remove bookmark' : 'Bookmark question'}">${bookmarked ? '★' : '☆'}</button></article>`;
 }
 function applyFilters() {
   const search = document.getElementById('question-search').value.trim().toLowerCase();
@@ -343,16 +342,25 @@ function renderQuestion(qid, tab = 'bank') {
   const code = q.sampleCode ? `<h3>Sample code/query</h3><pre><code>${escapeHtml(q.sampleCode)}</code></pre>` : '';
   const mistakes = (q.commonMistakes || []).map(x => escapeHtml(x)).map(x => `<li>${x}</li>`).join('');
   document.getElementById('question-detail').innerHTML = `
-    <div class="question-head"><div class="row-between"><span class="question-id">${escapeHtml(q.id.toUpperCase())} · ${escapeHtml(savedStatus)}</span><button class="icon-button bookmark-toggle" type="button" data-bookmark="${q.id}" aria-label="${bookmarked?'Remove bookmark':'Bookmark question'}">${bookmarked?'★':'☆'}</button></div><div class="chips"><span class="chip accent">${escapeHtml(getTrack(q.category).title)}</span><span class="chip">${escapeHtml(q.difficulty)}</span><span class="chip">${escapeHtml(labelize(q.type))}</span></div><h1 id="question-title">${escapeHtml(q.question)}</h1><p class="muted-copy">Relevant roles: ${escapeHtml(q.roles.join(', '))}</p></div>
-    ${activePath && activePath.ids.includes(q.id) ? `<section class="panel guided-step"><div class="row-between"><div><p class="kicker">GUIDED LEARNING PATH</p><h2>${escapeHtml(getTrack(activePath.category).title)}</h2></div><span class="step-count">Step ${activePath.index + 1} / ${activePath.ids.length}</span></div><div class="progress-track"><span style="width:${Math.round(((activePath.index + 1) / activePath.ids.length) * 100)}%"></span></div><div class="button-row path-buttons"><button id="path-prev" class="btn btn-secondary" type="button" ${activePath.index === 0 ? 'disabled' : ''}>← Previous</button><button id="path-next" class="btn btn-primary" type="button">${activePath.index === activePath.ids.length - 1 ? 'Finish path ✓' : 'Next question →'}</button></div></section>` : `<section class="panel guided-step"><p class="kicker">LEARN IN ORDER</p><h2>Want to follow a complete path?</h2><p class="muted-copy">Start from the first unattempted question and follow this topic step by step.</p><button id="start-topic-path" class="btn btn-secondary" type="button">Start ${escapeHtml(getTrack(q.category).title)} path →</button></section>`}
-    <section class="panel voice-practice"><div class="row-between"><div><p class="kicker">FREE BROWSER VOICE TOOLS</p><h2>Speak your answer</h2></div><span class="voice-mark" aria-hidden="true">🎙️</span></div><p class="muted-copy">Read-aloud uses your browser. Speech-to-text depends on browser/device support and may require internet. No paid API is used.</p><label class="field-label" for="voice-language">Voice language</label><select id="voice-language" class="large-select"><option value="en-IN">English (India)</option><option value="en-US">English (US)</option><option value="hi-IN">Hindi</option></select><div class="button-row voice-buttons"><button id="speak-question" class="btn btn-secondary" type="button">🔊 Read question</button><button id="voice-answer" class="btn btn-primary" type="button">🎙️ Answer by voice</button><button id="stop-voice" class="btn btn-secondary" type="button">Stop audio</button></div><p id="voice-status" class="answer-hint" role="status" aria-live="polite">Voice input will put recognized words into your answer box. Check spelling and edit the answer.</p></section>
-    <div class="answer-box"><label for="candidate-answer">Your answer (Hindi, Hinglish or English is okay)</label><textarea id="candidate-answer" placeholder="Pehle apna answer khud try karo…" rows="5" spellcheck="true" autocomplete="off"></textarea><p class="answer-hint">Answer is not saved to your history by default. Only your attempt status is saved on this device.</p></div>
-    <div class="answer-actions"><button id="reveal-answer" class="btn btn-secondary" type="button">Reveal sample answer</button><button id="chatgpt-feedback" class="btn btn-primary" type="button">Ask ChatGPT for feedback ↗</button><button id="copy-coach-prompt" class="btn btn-secondary" type="button">Copy coach prompt</button></div>
-    <div id="answer-reveal" class="answer-reveal hidden"><span class="score-pill">Model answer · Review, not a guaranteed only answer</span><button id="speak-answer" class="btn btn-secondary" type="button">🔊 Read sample answer aloud</button><h2>Short answer</h2><p>${escapeHtml(q.shortAnswer)}</p><h2>Explanation</h2><p>${escapeHtml(q.explanation)}</p><h3>Practical example</h3><p>${escapeHtml(q.example)}</p>${code}<h3>Common mistakes to avoid</h3><ul>${mistakes}</ul><h3>Interviewer follow-up</h3><p>${escapeHtml(q.followUp)}</p><h3>Suggested answer structure</h3><p>${escapeHtml(q.answerStructure)}</p>${srcLinks ? `<h3>References</h3><p class="reference-links">${srcLinks}</p>` : ''}
-      <div class="note-box">Offline practice does not automatically grade free-text answers. Compare your attempt with this guide. Use the ChatGPT button for optional external feedback.</div>
-      <div class="quality-actions"><button id="mark-mastered" class="btn btn-mint" type="button">I understand this (+10 XP once/day)</button><button id="mark-review" class="btn btn-secondary" type="button">Needs revision (+10 XP once/day)</button></div>
+    <div class="question-head">
+      <div class="question-meta-row"><span class="chip accent">${escapeHtml(getTrack(q.category).title)}</span><span class="chip">${escapeHtml(q.difficulty)}</span><button class="icon-button bookmark-toggle" type="button" data-bookmark="${q.id}" aria-label="${bookmarked?'Remove bookmark':'Bookmark question'}">${bookmarked?'★':'☆'}</button></div>
+      <p class="question-id">${escapeHtml(savedStatus)}</p>
+      <h1 id="question-title">${escapeHtml(q.question)}</h1>
+      <p class="question-instruction">Take a moment. Answer in your own words first — Hindi, Hinglish or English is fine.</p>
     </div>
-    <div class="plain-note">Source handling: content is a learning guide, not a claim that this exact wording is frequently asked. Use follow-up questions to check real understanding.</div>`;
+    ${activePath && activePath.ids.includes(q.id) ? `<section class="path-progress-card"><div class="row-between"><div><p class="kicker">YOUR LEARNING PATH</p><h2>${escapeHtml(getTrack(activePath.category).title)}</h2></div><span class="step-count">Step ${activePath.index + 1} of ${activePath.ids.length}</span></div><div class="progress-track"><span style="width:${Math.round(((activePath.index + 1) / activePath.ids.length) * 100)}%"></span></div><div class="button-row path-buttons"><button id="path-prev" class="btn btn-secondary" type="button" ${activePath.index === 0 ? 'disabled' : ''}>← Previous</button><button id="path-next" class="btn btn-primary" type="button">${activePath.index === activePath.ids.length - 1 ? 'Finish path ✓' : 'Next question →'}</button></div></section>` : `<div class="question-path-link"><button id="start-topic-path" class="text-button" type="button">Want a guided path? Start ${escapeHtml(getTrack(q.category).title)} →</button></div>`}
+    <details class="voice-tools">
+      <summary><span aria-hidden="true">🎙</span><span><strong>Listen or speak your answer</strong><small>Free browser voice tools</small></span></summary>
+      <div class="voice-tools-body"><p class="muted-copy">Read-aloud uses your browser. Voice typing varies by browser/device and may require internet. No paid API is used.</p><label class="field-label" for="voice-language">Voice language</label><select id="voice-language" class="large-select"><option value="en-IN">English (India)</option><option value="en-US">English (US)</option><option value="hi-IN">Hindi</option></select><div class="button-row voice-buttons"><button id="speak-question" class="btn btn-secondary" type="button">🔊 Read question</button><button id="voice-answer" class="btn btn-primary" type="button">🎙 Answer by voice</button><button id="stop-voice" class="btn btn-secondary" type="button">Stop audio</button></div><p id="voice-status" class="answer-hint" role="status" aria-live="polite">If voice typing isn't supported, use your Android keyboard microphone or type instead.</p></div>
+    </details>
+    <div class="answer-box"><label for="candidate-answer">Your answer</label><textarea id="candidate-answer" placeholder="Pehle apna answer try karo…" rows="5" spellcheck="true" autocomplete="off"></textarea><p class="answer-hint">Stuck? “I'm not fully sure yet” likhna bhi theek hai. Apna honest attempt do.</p></div>
+    <div class="answer-actions"><button id="reveal-answer" class="btn btn-primary" type="button">Show sample answer</button><button id="chatgpt-feedback" class="btn btn-secondary" type="button">Get ChatGPT feedback ↗</button></div>
+    <details class="prompt-tools"><summary>More help · copy a coaching prompt</summary><div class="prompt-tools-body"><p class="muted-copy">Opens no AI automatically; copy the prompt and paste it into a ChatGPT chat.</p><button id="copy-coach-prompt" class="btn btn-secondary" type="button">Copy coach prompt</button></div></details>
+    <div id="answer-reveal" class="answer-reveal hidden"><span class="score-pill">Sample answer · One helpful approach</span><button id="speak-answer" class="btn btn-secondary speak-answer-button" type="button">🔊 Read sample answer aloud</button><h2>Short answer</h2><p>${escapeHtml(q.shortAnswer)}</p><h2>Explanation</h2><p>${escapeHtml(q.explanation)}</p>
+      <details class="answer-extra"><summary>Example, mistakes & follow-up</summary><div class="answer-extra-body"><h3>Practical example</h3><p>${escapeHtml(q.example)}</p>${code}<h3>Common mistakes to avoid</h3><ul>${mistakes}</ul><h3>Interviewer follow-up</h3><p>${escapeHtml(q.followUp)}</p><h3>Suggested answer structure</h3><p>${escapeHtml(q.answerStructure)}</p>${srcLinks ? `<h3>References</h3><p class="reference-links">${srcLinks}</p>` : ''}</div></details>
+      <div class="note-box">Offline mode does not automatically grade free-text answers. Compare your attempt with the sample and choose a review status.</div>
+      <div class="quality-actions"><button id="mark-mastered" class="btn btn-mint" type="button">I understand this</button><button id="mark-review" class="btn btn-secondary" type="button">Needs revision</button></div>
+    </div>`;
   showTab('question');
   document.getElementById('speak-question').addEventListener('click', () => speakText(q.question));
   document.getElementById('voice-answer').addEventListener('click', startVoiceInput);
@@ -411,7 +419,7 @@ function toggleBookmark(id) {
   if (currentQuestionId === id && document.getElementById('question-view').classList.contains('active')) renderQuestion(id,returnTab);
 }
 function openCategory(id) {
-  showTab('bank'); document.getElementById('filter-category').value = TRACKS.some(t => t.id === id) ? id : '';
+  showTab('bank'); const filterPanel=document.getElementById('filter-panel'); if(filterPanel) filterPanel.open=true; document.getElementById('filter-category').value = TRACKS.some(t => t.id === id) ? id : '';
   document.getElementById('question-search').value = ''; document.getElementById('filter-bookmarks').checked = false; document.getElementById('filter-revision').checked = false; document.getElementById('filter-unseen').checked = false;
   renderQuestionBank();
 }
@@ -444,11 +452,12 @@ function renderSources() {
 function showTab(tab) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(`${tab}-view`); if (target) target.classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active',b.dataset.tab===tab));
-  if (tab === 'practice') renderTracks(document.getElementById('module-search').value);
+  const activeTab = tab === 'bank' ? 'practice' : tab === 'question' ? (returnTab === 'bank' ? 'practice' : returnTab) : tab;
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active',b.dataset.tab===activeTab));
+  if (tab === 'practice') renderTracks(document.getElementById('module-search')?.value || '');
   if (tab === 'bank') renderQuestionBank();
   if (tab === 'progress') renderProgress();
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
 function startMock() {
   const mode = document.getElementById('mock-mode').value;
@@ -572,8 +581,8 @@ async function init() {
   try {
     // Supports both the structured /data/ layout and the flat root layout already uploaded to GitHub.
     const [qJson,sourcesJson] = await Promise.all([
-      fetchJsonFromFirstAvailable(['./data/questions.json','./questions.json'], 'Question bank'),
-      fetchJsonFromFirstAvailable(['./data/sources.json','./sources.json'], 'Research sources')
+      fetchJsonFromFirstAvailable(['./questions.json','./data/questions.json'], 'Question bank'),
+      fetchJsonFromFirstAvailable(['./sources.json','./data/sources.json'], 'Research sources')
     ]);
     sources = Array.isArray(sourcesJson) ? sourcesJson : (Array.isArray(sourcesJson.sources) ? sourcesJson.sources : []);
     questions = Array.isArray(qJson.questions) ? qJson.questions : [];
@@ -587,16 +596,15 @@ async function init() {
     if (pathCategory) pathCategory.innerHTML = TRACKS.map(t => `<option value="${t.id}">${escapeHtml(t.title)}</option>`).join('');
     document.getElementById('start-guided-path')?.addEventListener('click', () => startGuidedPath());
     applyTheme(); renderAll(); renderSources(); saveState(true);
-    document.getElementById('bank-count').textContent = `${questions.length} questions`;
-    const top = questions[0]; if (top) document.getElementById('start-today').addEventListener('click',()=>renderQuestion(chooseNextQuestion()?.id || top.id,'home'));
-    document.getElementById('start-random').addEventListener('click',()=>{const q=questions[Math.floor(Math.random()*questions.length)];if(q)renderQuestion(q.id,'home');});
-    document.getElementById('continue-learning').addEventListener('click',()=>{const q=chooseNextQuestion();if(q)renderQuestion(q.id,'home');});
+    const bankCount = document.getElementById('bank-count'); if (bankCount) bankCount.textContent = `${questions.length} questions`;
+    const continueButton = document.getElementById('continue-learning'); if (continueButton) continueButton.addEventListener('click',()=>{const q=chooseNextQuestion();if(q)renderQuestion(q.id,'home');});
     document.getElementById('back-from-question').addEventListener('click',()=>showTab(returnTab));
     document.getElementById('module-search').addEventListener('input',e=>renderTracks(e.target.value));
     document.getElementById('question-search').addEventListener('input',()=>renderQuestionBank());
     ['filter-category','filter-difficulty','filter-type','filter-role','sort-questions','filter-bookmarks','filter-revision','filter-unseen'].forEach(id=>document.getElementById(id).addEventListener('change',()=>renderQuestionBank()));
     document.getElementById('clear-filters').addEventListener('click',()=>{document.getElementById('question-search').value='';['filter-category','filter-difficulty','filter-type','filter-role'].forEach(id=>document.getElementById(id).value='');['filter-bookmarks','filter-revision','filter-unseen'].forEach(id=>document.getElementById(id).checked=false);document.getElementById('sort-questions').value='relevance';renderQuestionBank();});
     document.getElementById('load-more').addEventListener('click',()=>{visibleLimit+=PAGE_SIZE;renderQuestionBank(false);});
+    document.querySelector('[data-close-filters]')?.addEventListener('click',()=>{const d=document.getElementById('filter-panel');if(d)d.open=false;});
     document.getElementById('begin-mock').addEventListener('click',startMock);
     document.getElementById('daily-goal-setting').addEventListener('change',e=>{state.dailyGoal=[3,5,8,10].includes(Number(e.target.value))?Number(e.target.value):5;saveState();renderHome();renderProgress();});
     document.getElementById('theme-toggle').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();saveState();});
@@ -616,9 +624,9 @@ async function init() {
     if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
   } catch (error) {
     console.error(error);
-    document.getElementById('bank-count').textContent='Questions unavailable';
+    const bankCount = document.getElementById('bank-count'); if (bankCount) bankCount.textContent='Questions unavailable';
     document.getElementById('home-title').textContent='Question bank could not load';
-    const hero = document.querySelector('.hero > p'); if(hero) hero.textContent='Question data could not load. Open through GitHub Pages/HTTPS or a local web server (not file://), then verify questions.json and sources.json are in the repository root or in data/. Details are available in the browser console.';
+    const introParagraph = document.querySelector('.welcome-block > p:last-child'); if(introParagraph) introParagraph.textContent='Question data could not load. Open through GitHub Pages/HTTPS or a local web server (not file://), then verify questions.json and sources.json are in the repository root or in data/. Details are available in the browser console.';
     showToast(`Load error: ${error.message || 'check data files and refresh'}`);
   }
 }
