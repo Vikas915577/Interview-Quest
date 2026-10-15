@@ -1,13 +1,13 @@
 {
-  "name": "Interview Quest — Daily Practice",
+  "name": "Interview Quest — Interview Preparation",
   "short_name": "Interview Quest",
-  "description": "Mobile-first interview prep for HR, telephonic, SQL, BI, Python and English confidence.",
+  "description": "A mobile-first interview practice platform for HR, telephonic, SQL, Excel, Power BI, Infor Birst, Python and analytics.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1120",
   "theme_color": "#101827",
   "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }

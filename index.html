@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#101827" />
-  <meta name="description" content="A simple, mobile-first interview practice app for HR, telephonic, SQL, BI, Python and English confidence." />
-  <title>Interview Quest — Daily Practice</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Interview Quest: mobile-first HR, telephonic, SQL, Excel, Power BI, Infor Birst, Python and analytics interview practice.">
+  <meta name="color-scheme" content="dark light">
+  <title>Interview Quest — Interview Prep</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
 </head>
 <body>
   <div class="app-shell">
@@ -17,70 +19,136 @@
         <span class="brand-mark">IQ</span>
         <span class="brand-copy"><strong>Interview Quest</strong><small>One question at a time</small></span>
       </button>
-      <a class="chatgpt-top" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✳</span> ChatGPT</a>
+      <div class="top-actions">
+        <span id="bank-count" class="bank-count">Loading questions…</span>
+        <a class="chatgpt-top" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT in a new tab">✳ ChatGPT</a>
+      </div>
     </header>
 
     <main id="main-content" tabindex="-1">
       <section id="home-view" class="view active" aria-labelledby="home-title">
         <div class="hero">
-          <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL PRACTICE SPACE</div>
+          <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> YOUR PERSONAL PRACTICE SPACE</div>
           <h1 id="home-title">Interview confidence,<br><span>one step at a time.</span></h1>
           <p>Perfect English zaroori nahi. Pehle answer dena start karo — improvement practice se aayegi.</p>
-          <button id="start-today" class="btn btn-primary btn-wide" type="button">Start today's mission <span aria-hidden="true">→</span></button>
-          <div class="hero-foot"><span>⏱ 10–15 min/day</span><span>◎ Beginner friendly</span><span>↗ ChatGPT supported</span></div>
+          <div class="hero-actions">
+            <button id="start-today" class="btn btn-primary btn-wide" type="button">Start today's mission <span aria-hidden="true">→</span></button>
+            <button id="start-random" class="btn btn-secondary" type="button">Random question</button>
+          </div>
+          <div class="hero-foot"><span>⏱ 10–15 min/day</span><span>◎ Beginner friendly</span><span>↗ ChatGPT opens separately</span></div>
         </div>
 
         <div class="stats-row" aria-label="Your progress">
-          <article class="stat-card"><span class="stat-icon">⚡</span><strong id="home-xp">0 XP</strong><small>Total XP</small></article>
-          <article class="stat-card"><span class="stat-icon">🔥</span><strong id="home-streak">0 days</strong><small>Practice streak</small></article>
-          <article class="stat-card"><span class="stat-icon">✓</span><strong id="home-done">0 / 9</strong><small>Done today</small></article>
+          <article class="stat-card"><span class="stat-icon" aria-hidden="true">⚡</span><strong id="home-xp">0 XP</strong><small>Total XP</small></article>
+          <article class="stat-card"><span class="stat-icon" aria-hidden="true">🔥</span><strong id="home-streak">0 days</strong><small>Practice streak</small></article>
+          <article class="stat-card"><span class="stat-icon" aria-hidden="true">✓</span><strong id="home-mastered">0</strong><small>Marked understood</small></article>
         </div>
 
-        <div class="section-heading"><div><p class="kicker">PICK UP WHERE YOU LEFT</p><h2>Practice areas</h2></div><button class="text-button" type="button" data-tab="practice">See all <span aria-hidden="true">→</span></button></div>
+        <div class="section-heading"><div><p class="kicker">PICK UP WHERE YOU LEFT</p><h2>Practice tracks</h2></div><button class="text-button" type="button" data-tab="practice">See all →</button></div>
         <div id="home-modules" class="module-grid compact-grid"></div>
 
-        <section class="tip-card">
-          <div class="tip-bulb" aria-hidden="true">✦</div>
-          <div><p class="kicker">TODAY'S REMINDER</p><h3>Answer first. Improve second.</h3><p>Atak jao toh Hindi/Hinglish mein batao. Coach tumhe simple English answer banane mein help karega.</p></div>
-        </section>
+        <div class="two-col-section">
+          <section class="panel"><p class="kicker">YOUR NEXT STEP</p><h2 id="next-step-title">Start with one easy question</h2><p id="next-step-copy">Try a question, compare your answer with the sample, then mark it understood or save it for revision.</p><button id="continue-learning" class="btn btn-secondary" type="button">Continue learning →</button></section>
+          <section class="panel"><p class="kicker">DAILY TARGET</p><div class="goal-line"><strong id="daily-done">0 / 5</strong><span>questions attempted</span></div><div class="progress-track"><span id="daily-progress"></span></div><p class="muted-copy">XP is earned for an attempt, not for pretending an answer is correct.</p></section>
+        </div>
       </section>
 
       <section id="practice-view" class="view" aria-labelledby="practice-title">
-        <div class="page-heading"><p class="kicker">YOUR TRAINING LIBRARY</p><h1 id="practice-title">Choose a practice area</h1><p>Har card ek alag coach chat ke liye hai.</p></div>
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English..." autocomplete="off" /><kbd>/</kbd></label>
+        <div class="page-heading"><p class="kicker">YOUR TRAINING LIBRARY</p><h1 id="practice-title">Choose a practice track</h1><p>Har track ka alag focus hai. Ek waqt mein ek question solve karo.</p></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English…" autocomplete="off"><kbd>/</kbd></label>
         <div id="all-modules" class="module-grid"></div>
-        <p id="no-results" class="empty-state hidden">Koi matching topic nahi mila. Doosra word search karo.</p>
+        <p id="module-no-results" class="empty-state hidden">Koi matching topic nahi mila.</p>
       </section>
 
-      <section id="module-view" class="view" aria-labelledby="module-title">
-        <button id="back-to-practice" class="back-button" type="button">← All practice areas</button>
-        <div id="module-detail"></div>
+      <section id="bank-view" class="view" aria-labelledby="bank-title">
+        <div class="page-heading"><p class="kicker">SEARCHABLE QUESTION BANK</p><h1 id="bank-title">Question bank</h1><p>Answers try karo, phir explanation dekho. Search, filter, bookmark aur revise kar sakte ho.</p></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="Search a question or concept…" autocomplete="off"><kbd>/</kbd></label>
+        <div class="filters" aria-label="Question filters">
+          <label><span>Category</span><select id="filter-category"><option value="">All categories</option></select></label>
+          <label><span>Difficulty</span><select id="filter-difficulty"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+          <label><span>Question type</span><select id="filter-type"><option value="">All types</option></select></label>
+          <label><span>Role</span><select id="filter-role"><option value="">All roles</option></select></label>
+        </div>
+        <div class="filter-actions">
+          <label class="check-filter"><input id="filter-bookmarks" type="checkbox"> Bookmarked</label>
+          <label class="check-filter"><input id="filter-revision" type="checkbox"> Needs revision</label>
+          <label class="check-filter"><input id="filter-unseen" type="checkbox"> Not attempted</label>
+          <button id="clear-filters" class="text-button" type="button">Clear filters</button>
+        </div>
+        <div class="results-heading"><strong id="question-results-count">Loading…</strong><label class="sort-label">Sort <select id="sort-questions"><option value="relevance">Relevance</option><option value="easy">Easiest first</option><option value="hard">Hardest first</option><option value="unseen">Unattempted first</option></select></label></div>
+        <div id="question-results" class="question-results" aria-live="polite"></div>
+        <div class="pagination-row"><button id="load-more" class="btn btn-secondary hidden" type="button">Load more questions</button></div>
+        <p id="question-no-results" class="empty-state hidden">No questions match these filters. Try clearing one filter.</p>
       </section>
 
-      <section id="plan-view" class="view" aria-labelledby="plan-title">
-        <div class="page-heading"><p class="kicker">SMALL DAILY WINS</p><h1 id="plan-title">7-day quick-start plan</h1><p>Roz thoda practice. Applications bhi saath-saath continue rakho.</p></div>
-        <div id="plan-list" class="plan-list"></div>
-        <div class="plain-note"><strong>Remember:</strong> Ye focused preparation plan hai, job guarantee nahi. Har interview aur company ki requirements alag hoti hain.</div>
+      <section id="question-view" class="view" aria-labelledby="question-title">
+        <button id="back-from-question" class="back-button" type="button">← Back to questions</button>
+        <div id="question-detail"></div>
+      </section>
+
+      <section id="mock-view" class="view" aria-labelledby="mock-title">
+        <div class="page-heading"><p class="kicker">INTERVIEW SIMULATOR</p><h1 id="mock-title">Mock interview</h1><p>Local practice uses self-review; it does not pretend to have AI-scored your answer. Use the ChatGPT coach for external feedback.</p></div>
+        <div id="mock-setup" class="panel mock-setup">
+          <label class="field-label" for="mock-mode">Choose a mock interview</label>
+          <select id="mock-mode" class="large-select">
+            <option value="mixed">Full mixed interview</option><option value="telephonic">Telephonic screening</option><option value="hr">HR & behavioural</option><option value="sql">SQL technical</option><option value="excel">Excel / MIS</option><option value="powerbi">Power BI</option><option value="birst">Infor Birst</option><option value="python">Python / Pandas</option><option value="analytics">Data Analyst case study</option><option value="data-engineering">Junior Data Engineer</option><option value="resume-project">Resume & portfolio</option>
+          </select>
+          <label class="field-label" for="mock-length">Questions in this session</label>
+          <select id="mock-length" class="large-select"><option value="5">5 questions — quick practice</option><option value="8" selected>8 questions — standard</option><option value="12">12 questions — longer practice</option></select>
+          <button id="begin-mock" class="btn btn-primary btn-wide" type="button">Start mock interview →</button>
+        </div>
+        <div id="mock-stage" class="hidden"></div>
+        <div id="mock-results" class="hidden"></div>
       </section>
 
       <section id="progress-view" class="view" aria-labelledby="progress-title">
-        <div class="page-heading"><p class="kicker">EVERY ATTEMPT COUNTS</p><h1 id="progress-title">Your progress</h1><p>Progress isi device ke browser mein save hoti hai.</p></div>
-        <div class="progress-feature"><div><span class="kicker">TOTAL EXPERIENCE</span><strong id="progress-xp">0 XP</strong><small id="progress-sessions">0 practice sessions completed</small></div><div class="trophy">🏆</div></div>
-        <div class="section-heading"><div><p class="kicker">BY PRACTICE AREA</p><h2>Practice history</h2></div></div>
-        <div id="progress-list" class="progress-list"></div>
-        <button id="reset-progress" class="btn btn-danger-ghost" type="button">Reset my progress</button>
+        <div class="page-heading"><p class="kicker">EVERY ATTEMPT COUNTS</p><h1 id="progress-title">Your progress</h1><p>Progress is stored in this browser on this device. Export a backup regularly.</p></div>
+        <div class="stats-row progress-stats">
+          <article class="stat-card"><span class="stat-icon">⚡</span><strong id="progress-xp">0 XP</strong><small>Total XP</small></article>
+          <article class="stat-card"><span class="stat-icon">✍</span><strong id="progress-attempts">0</strong><small>Attempts</small></article>
+          <article class="stat-card"><span class="stat-icon">↻</span><strong id="progress-review">0</strong><small>To revise</small></article>
+        </div>
+        <div class="two-col-section">
+          <section class="panel"><p class="kicker">CURRENT STREAK</p><strong id="progress-streak" class="big-stat">0 days</strong><p class="muted-copy">At least one question attempt on each consecutive local calendar day.</p></section>
+          <section class="panel"><p class="kicker">DAILY GOAL</p><div class="goal-line"><strong id="progress-goal">0 / 5</strong><span>questions today</span></div><div class="progress-track"><span id="progress-goal-bar"></span></div><label class="field-label" for="daily-goal-setting">Questions per day</label><select id="daily-goal-setting" class="large-select"><option value="3">3</option><option value="5" selected>5</option><option value="8">8</option><option value="10">10</option></select></section>
+        </div>
+        <div class="section-heading"><div><p class="kicker">TOPIC STATUS</p><h2>Progress by track</h2></div></div>
+        <div id="progress-by-track" class="progress-list"></div>
+        <div class="section-heading"><div><p class="kicker">RECENT WORK</p><h2>Recent attempts</h2></div></div>
+        <div id="recent-attempts" class="progress-list"></div>
+      </section>
+
+      <section id="more-view" class="view" aria-labelledby="more-title">
+        <div class="page-heading"><p class="kicker">SETTINGS & RESOURCES</p><h1 id="more-title">More</h1><p>Apna data safe rakho aur learning references yahan dekho.</p></div>
+        <section class="panel settings-panel">
+          <h2>Appearance</h2><p class="muted-copy">Choose a comfortable reading theme.</p>
+          <button id="theme-toggle" class="btn btn-secondary" type="button">Switch to light mode</button>
+        </section>
+        <section class="panel settings-panel">
+          <h2>Backup & recovery</h2><p class="muted-copy">Export practice history, bookmarks and revision status as JSON. Imported files are validated before applying.</p>
+          <div class="button-row"><button id="export-data" class="btn btn-primary" type="button">Export backup</button><label class="btn btn-secondary file-button" for="import-file">Import backup</label><input id="import-file" class="visually-hidden" type="file" accept="application/json,.json"></div>
+          <button id="reset-progress" class="btn btn-danger-ghost" type="button">Reset local progress</button>
+        </section>
+        <section class="panel settings-panel">
+          <h2>Open ChatGPT coach</h2><p class="muted-copy">ChatGPT opens in a separate tab. Prompt prefill is not a guaranteed public API; use the copy-prompt fallback if needed.</p><a class="btn btn-secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
+        </section>
+        <section class="panel settings-panel">
+          <h2>Research references</h2><p class="muted-copy">Documentation and career guides used to shape topic coverage. “Useful for” describes what the source supports; sources do not prove that each question is frequently asked.</p><div id="source-list" class="source-list"></div>
+        </section>
+        <section class="panel settings-panel"><h2>How evaluation works</h2><p class="muted-copy">Offline practice does not judge free-text answers. You compare your attempt with the model answer and mark it as understood or needing revision. Opening ChatGPT can provide separate feedback, subject to ChatGPT account and product behaviour.</p></section>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Main navigation">
-      <button class="nav-item active" data-tab="home" type="button"><span>⌂</span><small>Home</small></button>
-      <button class="nav-item" data-tab="practice" type="button"><span>▦</span><small>Practice</small></button>
-      <button class="nav-item" data-tab="plan" type="button"><span>◷</span><small>7-day plan</small></button>
-      <button class="nav-item" data-tab="progress" type="button"><span>↗</span><small>Progress</small></button>
+      <button class="nav-item active" data-tab="home" type="button"><span aria-hidden="true">⌂</span><small>Home</small></button>
+      <button class="nav-item" data-tab="practice" type="button"><span aria-hidden="true">▦</span><small>Practice</small></button>
+      <button class="nav-item" data-tab="bank" type="button"><span aria-hidden="true">☷</span><small>Questions</small></button>
+      <button class="nav-item" data-tab="mock" type="button"><span aria-hidden="true">◎</span><small>Mock</small></button>
+      <button class="nav-item" data-tab="progress" type="button"><span aria-hidden="true">↗</span><small>Progress</small></button>
+      <button class="nav-item" data-tab="more" type="button"><span aria-hidden="true">⋯</span><small>More</small></button>
     </nav>
   </div>
-
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <noscript><p class="noscript">JavaScript is required for question search and practice tracking. Enable JavaScript and reopen this page.</p></noscript>
 </body>
 </html>
