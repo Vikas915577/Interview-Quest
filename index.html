@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101827" />
+  <meta name="description" content="A simple, mobile-first interview practice app for HR, telephonic, SQL, BI, Python and English confidence." />
+  <title>Interview Quest — Daily Practice</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" type="button" data-tab="home" aria-label="Go to home">
+        <span class="brand-mark">IQ</span>
+        <span class="brand-copy"><strong>Interview Quest</strong><small>One question at a time</small></span>
+      </button>
+      <a class="chatgpt-top" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✳</span> ChatGPT</a>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section id="home-view" class="view active" aria-labelledby="home-title">
+        <div class="hero">
+          <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL PRACTICE SPACE</div>
+          <h1 id="home-title">Interview confidence,<br><span>one step at a time.</span></h1>
+          <p>Perfect English zaroori nahi. Pehle answer dena start karo — improvement practice se aayegi.</p>
+          <button id="start-today" class="btn btn-primary btn-wide" type="button">Start today's mission <span aria-hidden="true">→</span></button>
+          <div class="hero-foot"><span>⏱ 10–15 min/day</span><span>◎ Beginner friendly</span><span>↗ ChatGPT supported</span></div>
+        </div>
+
+        <div class="stats-row" aria-label="Your progress">
+          <article class="stat-card"><span class="stat-icon">⚡</span><strong id="home-xp">0 XP</strong><small>Total XP</small></article>
+          <article class="stat-card"><span class="stat-icon">🔥</span><strong id="home-streak">0 days</strong><small>Practice streak</small></article>
+          <article class="stat-card"><span class="stat-icon">✓</span><strong id="home-done">0 / 9</strong><small>Done today</small></article>
+        </div>
+
+        <div class="section-heading"><div><p class="kicker">PICK UP WHERE YOU LEFT</p><h2>Practice areas</h2></div><button class="text-button" type="button" data-tab="practice">See all <span aria-hidden="true">→</span></button></div>
+        <div id="home-modules" class="module-grid compact-grid"></div>
+
+        <section class="tip-card">
+          <div class="tip-bulb" aria-hidden="true">✦</div>
+          <div><p class="kicker">TODAY'S REMINDER</p><h3>Answer first. Improve second.</h3><p>Atak jao toh Hindi/Hinglish mein batao. Coach tumhe simple English answer banane mein help karega.</p></div>
+        </section>
+      </section>
+
+      <section id="practice-view" class="view" aria-labelledby="practice-title">
+        <div class="page-heading"><p class="kicker">YOUR TRAINING LIBRARY</p><h1 id="practice-title">Choose a practice area</h1><p>Har card ek alag coach chat ke liye hai.</p></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="module-search" type="search" placeholder="Search SQL, HR, English..." autocomplete="off" /><kbd>/</kbd></label>
+        <div id="all-modules" class="module-grid"></div>
+        <p id="no-results" class="empty-state hidden">Koi matching topic nahi mila. Doosra word search karo.</p>
+      </section>
+
+      <section id="module-view" class="view" aria-labelledby="module-title">
+        <button id="back-to-practice" class="back-button" type="button">← All practice areas</button>
+        <div id="module-detail"></div>
+      </section>
+
+      <section id="plan-view" class="view" aria-labelledby="plan-title">
+        <div class="page-heading"><p class="kicker">SMALL DAILY WINS</p><h1 id="plan-title">7-day quick-start plan</h1><p>Roz thoda practice. Applications bhi saath-saath continue rakho.</p></div>
+        <div id="plan-list" class="plan-list"></div>
+        <div class="plain-note"><strong>Remember:</strong> Ye focused preparation plan hai, job guarantee nahi. Har interview aur company ki requirements alag hoti hain.</div>
+      </section>
+
+      <section id="progress-view" class="view" aria-labelledby="progress-title">
+        <div class="page-heading"><p class="kicker">EVERY ATTEMPT COUNTS</p><h1 id="progress-title">Your progress</h1><p>Progress isi device ke browser mein save hoti hai.</p></div>
+        <div class="progress-feature"><div><span class="kicker">TOTAL EXPERIENCE</span><strong id="progress-xp">0 XP</strong><small id="progress-sessions">0 practice sessions completed</small></div><div class="trophy">🏆</div></div>
+        <div class="section-heading"><div><p class="kicker">BY PRACTICE AREA</p><h2>Practice history</h2></div></div>
+        <div id="progress-list" class="progress-list"></div>
+        <button id="reset-progress" class="btn btn-danger-ghost" type="button">Reset my progress</button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-tab="home" type="button"><span>⌂</span><small>Home</small></button>
+      <button class="nav-item" data-tab="practice" type="button"><span>▦</span><small>Practice</small></button>
+      <button class="nav-item" data-tab="plan" type="button"><span>◷</span><small>7-day plan</small></button>
+      <button class="nav-item" data-tab="progress" type="button"><span>↗</span><small>Progress</small></button>
+    </nav>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
